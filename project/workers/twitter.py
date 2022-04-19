@@ -33,13 +33,13 @@ class TweetLookup:
         Method required by bearer token authentication.
         """
 
-        r.headers["Authorization"] = f"Bearer {bearer_token}"
+        r.headers["Authorization"] = f"Bearer {self.bearer_token}"
         r.headers["User-Agent"] = "v2TweetLookupPython"
         return r
 
 
     def connect_to_endpoint(url):
-        response = requests.request("GET", url, auth=bearer_oauth)
+        response = requests.request("GET", url, auth=self.bearer_oauth)
         status_code = response.status_code
         if response.status_code != 200:
             raise Exception(
@@ -79,13 +79,13 @@ class UserLookup:
         Method required by bearer token authentication.
         """
 
-        r.headers["Authorization"] = f"Bearer {bearer_token}"
+        r.headers["Authorization"] = f"Bearer {self.bearer_token}"
         r.headers["User-Agent"] = "v2UserLookupPython"
         return r
 
 
     def connect_to_endpoint(self, url):
-        response = requests.request("GET", url, auth=bearer_oauth,)
+        response = requests.request("GET", url, auth=self.bearer_oauth,)
         status_code = response.status_code # do nothing
         if response.status_code != 200:
             raise Exception(
