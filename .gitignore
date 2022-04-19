@@ -1,0 +1,4 @@
+.secret
+venv/
+project/__pycache__/
+project/workers/__pycache__
