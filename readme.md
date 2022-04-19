@@ -2,6 +2,19 @@
 ## Table of contents
 [Open Api Project Docs](openai.md)
 
+## Running project
+*Note: require python3.10 and python3.10-venv*
+```bash
+chmod +x local-env.sh
+. local-env.sh
+
+# run once to initialize project
+v-init
+
+# to run
+v-run
+```
+
 ## Resources:
 - [Towards Data Science Tutorial](https://towardsdatascience.com/step-by-step-twitter-sentiment-analysis-in-python-d6f650ade58d)
 - [Geeks For Geeks Tutorial](https://www.geeksforgeeks.org/twitter-sentiment-analysis-using-python/)
