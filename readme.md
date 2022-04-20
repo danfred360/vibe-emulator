@@ -1,7 +1,7 @@
 # twitter bot using gpt-3
-Currently this project will lookup a user by @ on twitter and export a json of tweets.
+Currently this project will lookup a user by @ on twitter and export a JSONL file composed of three word prompts and resulting tweets to be used to fine tune an openai model.
 
-## Running project
+## Running project to generate training JSONL
 *Note: requires python3.10 and python3.10-venv*
 ```bash
 chmod +x local-env.sh
@@ -12,6 +12,39 @@ v-init
 
 # to run
 v-run
+```
+
+## Training Model
+Prepare training file
+```bash
+openai tools fine_tunes.prepare_data -f <LOCAL_FILE>
+```
+
+Create a fine-tuned model
+```bash
+openai api fine_tunes.create -t <TRAIN_FILE_ID_OR_PATH> -m <BASE_MODEL>
+
+# resume event stream later if training takes a while
+openai api fine_tunes.follow -i <YOUR_FINE_TUNE_JOB_ID>
+```
+
+List fine tunes
+```bash
+# List all created fine-tunes
+openai api fine_tunes.list
+
+# Retrieve the state of a fine-tune. The resulting object includes
+# job status (which can be one of pending, running, succeeded, or failed)
+# and other information
+openai api fine_tunes.get -i <YOUR_FINE_TUNE_JOB_ID>
+
+# Cancel a job
+openai api fine_tunes.cancel -i <YOUR_FINE_TUNE_JOB_ID>
+```
+
+Use a fine-tuned model
+```bash
+openai api completions.create -m <FINE_TUNED_MODEL> -p <YOUR_PROMPT>
 ```
 
 ## Documentation

@@ -3,17 +3,20 @@ import os
 import json
 
 class TweetLookup:
-    def __init__(self, authour_id, max_results):
+    def __init__(self, authour_id, max_results, pagination_token=None):
         # To set your enviornment variables in your terminal run the following line:
         # export 'BEARER_TOKEN'='<your_bearer_token>'
         self.bearer_token = os.environ.get("TWITTER_BEARER_TOKEN")
 
-        url = self.create_url(authour_id, max_results)
+        if pagination_token is None:
+            url = self.create_url(authour_id, max_results)
+        else:
+            url = self.create_url(authour_id, max_results, pagination_token)
         self.response = self.connect_to_endpoint(url)
 
 
     # TODO use pagination_token parameter to load results until max_result
-    def create_url(self, author_id, max_result):
+    def create_url(self, author_id, max_results, pagination_token=None):
         tweet_fields = "tweet.fields=lang,author_id"
         # Tweet fields are adjustable.
         # Options include:
@@ -22,11 +25,16 @@ class TweetLookup:
         # in_reply_to_user_id, lang, non_public_metrics, organic_metrics,
         # possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets,
         # source, text, and withheld
-        ids = "ids={}".format(author_id)
+        ids = "ids={}".format(author_id) # specifying specific tweets instead of all user tweets
         # You can adjust ids to include a single Tweets.
         # Or you can add to up to 100 comma-separated IDs
-        max_results = "max_results={}".format(max_results)
-        url = "https://api.twitter.com/2/users/{}/tweets".format(author_id)
+        max_results_param = "max_results={}".format(max_results)
+        exclude = "exclude={}".format("retweets,replies")
+        if pagination_token is None:
+            url = "https://api.twitter.com/2/users/{}/tweets?{}&{}".format(author_id, exclude, max_results_param)
+        else:
+            pagination_token_param = "pagination_token={}".format(pagination_token)
+            url = "https://api.twitter.com/2/users/{}/tweets?{}&{}&{}".format(author_id, exclude, max_results_param, pagination_token_param)
         # "https://api.twitter.com/2/tweets?{}&{}".format(ids, tweet_fields)
         return url
 

@@ -2,3 +2,4 @@
 project/venv/
 project/__pycache__/
 project/workers/__pycache__
+notes.md

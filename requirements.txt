@@ -1,3 +1,5 @@
 azure-ai-textanalytics
 openai
 requests
+jsonlines
+wandb
