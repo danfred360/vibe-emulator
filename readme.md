@@ -1,7 +1,8 @@
 # twitter bot using gpt-3
-Currently this project will lookup a user by @ on twitter and export a JSONL file composed of three word prompts and resulting tweets to be used to fine tune an openai model.
+Currently this project will lookup a user by @ on twitter and export a JSONL file composed of three word prompts and resulting tweets to be used to fine tune an OpenAI model.
 
 ## Running project to generate training JSONL
+First you'll need to create a .secret file emulating .secret-example with your Twitter bearer token and your OpenAI API key.
 *Note: requires python3.10 and python3.10-venv*
 ```bash
 chmod +x local-env.sh
@@ -22,7 +23,7 @@ openai tools fine_tunes.prepare_data -f <LOCAL_FILE>
 
 Create a fine-tuned model
 ```bash
-openai api fine_tunes.create -t <TRAIN_FILE_ID_OR_PATH> -m <BASE_MODEL>
+openai api fine_tunes.create -t <TRAIN_FILE_ID_OR_PATH> -m <BASE_MODEL> # davinci, curie, babbage, ada
 
 # resume event stream later if training takes a while
 openai api fine_tunes.follow -i <YOUR_FINE_TUNE_JOB_ID>
