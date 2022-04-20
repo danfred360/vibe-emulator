@@ -1,3 +1,4 @@
+[Home](readme.md)
 # openapi
 collection of useful stuff from the docs
 

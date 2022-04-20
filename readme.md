@@ -1,19 +1,21 @@
 # twitter bot using gpt-3
-## Table of contents
-[Open Api Project Docs](openai.md)
+Currently this project will lookup a user by @ on twitter and export a json of tweets.
 
 ## Running project
-*Note: require python3.10 and python3.10-venv*
+*Note: requires python3.10 and python3.10-venv*
 ```bash
 chmod +x local-env.sh
 . local-env.sh
 
-# run once to initialize project
+# run once to initialize project environment
 v-init
 
 # to run
 v-run
 ```
+
+## Documentation
+[Open Api Project Docs](openai.md)
 
 ## Resources:
 - [Towards Data Science Tutorial](https://towardsdatascience.com/step-by-step-twitter-sentiment-analysis-in-python-d6f650ade58d)

@@ -3,16 +3,17 @@ import os
 import json
 
 class TweetLookup:
-    def __init__(self, authour_id):
+    def __init__(self, authour_id, max_results):
         # To set your enviornment variables in your terminal run the following line:
         # export 'BEARER_TOKEN'='<your_bearer_token>'
-        bearer_token = os.environ.get("TWITTER_BEARER_TOKEN")
+        self.bearer_token = os.environ.get("TWITTER_BEARER_TOKEN")
 
-        url = self.create_url(authour_id)
+        url = self.create_url(authour_id, max_results)
         self.response = self.connect_to_endpoint(url)
 
 
-    def create_url(self, author_id):
+    # TODO use pagination_token parameter to load results until max_result
+    def create_url(self, author_id, max_result):
         tweet_fields = "tweet.fields=lang,author_id"
         # Tweet fields are adjustable.
         # Options include:
@@ -24,11 +25,13 @@ class TweetLookup:
         ids = "ids={}".format(author_id)
         # You can adjust ids to include a single Tweets.
         # Or you can add to up to 100 comma-separated IDs
-        url = "https://api.twitter.com/2/tweets?{}&{}".format(ids, tweet_fields)
+        max_results = "max_results={}".format(max_results)
+        url = "https://api.twitter.com/2/users/{}/tweets".format(author_id)
+        # "https://api.twitter.com/2/tweets?{}&{}".format(ids, tweet_fields)
         return url
 
 
-    def bearer_oauth(r):
+    def bearer_oauth(self, r):
         """
         Method required by bearer token authentication.
         """
@@ -38,7 +41,7 @@ class TweetLookup:
         return r
 
 
-    def connect_to_endpoint(url):
+    def connect_to_endpoint(self, url):
         response = requests.request("GET", url, auth=self.bearer_oauth)
         status_code = response.status_code
         if response.status_code != 200:
@@ -47,7 +50,7 @@ class TweetLookup:
                     response.status_code, response.text
                 )
             )
-        return [status_code, json.dumps(response.json(), indent=4, sort_keys=True)]
+        return json.dumps(response.json(), indent=4, sort_keys=True)
 
 
 class UserLookup:
@@ -93,4 +96,4 @@ class UserLookup:
                     response.status_code, response.text
                 )
             )
-        return [status_code, json.dumps(response.json(), indent=4, sort_keys=True)]
+        return json.dumps(response.json(), indent=4, sort_keys=True)
