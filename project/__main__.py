@@ -1,8 +1,20 @@
 from workers.twitter import TweetLookup, UserLookup
+from workers.openai import CompletionRequest
 from datetime import datetime
 import json, jsonlines
 
-def main():
+def create_completion_request():
+    completion_request = CompletionRequest(get_prompt())
+    print(completion_request.response)
+
+def get_prompt():
+    invalid_prompt = True
+    while invalid_prompt:
+        query = input("Enter desired prompt --> ")
+        invalid_prompt = validate_input("Desired prompt: {}".format(query))
+    return query
+
+def create_training_file():
     # get @ of twitter account
     invalid_query = True
     while invalid_query:
@@ -70,7 +82,11 @@ def export_training_set(output_path, user_id):
         while x >= 0:
             new_tweet_lookup = TweetLookup(user_id, 100, pagination_token) # 100
             tweet_lookup_responses.append(new_tweet_lookup.response)
-            pagination_token = json.loads(new_tweet_lookup.response)["meta"]["next_token"]
+            try:
+                pagination_token = json.loads(new_tweet_lookup.response)["meta"]["next_token"]
+            except Exception as e:
+                print("Exception occurred gathering tweets (assumed no next page in response): {}\n".format(e))
+                break
             x -= 1
 
     except Exception as e:
@@ -78,6 +94,7 @@ def export_training_set(output_path, user_id):
         exit()
 
     try:
+        num_tweets = 0
         with jsonlines.open(output_path, 'w') as outfile:
             for response in tweet_lookup_responses:
                 for tweet in json.loads(response)["data"]:
@@ -86,7 +103,8 @@ def export_training_set(output_path, user_id):
                         prompt += " " + word
                     new_jsonl_line = {"prompt": prompt, "completion": " " + tweet["text"] + " END"}
                     outfile.write(new_jsonl_line)
-            print("\nSuccessfully outputed to {}...\n".format(output_path))
+                    num_tweets += 1
+            print("\nSuccessfully outputed {} tweets to {}...\n".format(num_tweets, output_path))
     except Exception as e:
         print("Exception occurred exporting tweets to JSONL trianing set: {}\n".format(e))
         exit()
@@ -104,4 +122,5 @@ def validate_input(query):
 
 
 if __name__ == "__main__":
-    main()
+    # create_training_file()
+    create_completion_request()

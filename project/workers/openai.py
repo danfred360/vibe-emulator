@@ -1,6 +1,19 @@
 import os
 import openai
 
+class CompletionRequest:
+    def __init__(self, prompt):
+        models = ['curie:ft-personal-2022-04-20-14-53-01', 'curie:ft-personal:dril-2022-04-20-15-42-28']
+        try:
+            self.response = openai.Completion.create(
+                model=models[1],
+                prompt=prompt,
+                max_tokens=70
+            )
+        except Exception as e:
+            print("Exception occured while attempting completion request: {}".format(e))
+
+
 # Note: this doesn't do anything yet
 
 class FineTunedModelCreator:
