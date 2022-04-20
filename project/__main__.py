@@ -22,24 +22,24 @@ def create_completion_request():
 
 def compare_completions():
     models = [
-            'curie:ft-personal:elon-2022-04-20-17-13-57',
-
-            ]
+        'curie:ft-personal:dril-2022-04-20-15-42-28',
+        'curie:ft-personal:elon-2022-04-20-17-13-57',
+        'curie:ft-personal:libsoftiktok-2022-04-20-17-49-25'
+    ]
 
     unused_models = [
         'curie:ft-personal-2022-04-20-14-53-01',
-        'curie:ft-personal:dril-2022-04-20-15-42-28'
     ]
 
     prompt = get_prompt()
 
     for model in models:
         completion_request = CompletionRequest(model, prompt, 1)
+        print("\n----------")
         print("\nOutput for model {}:\n".format(model))
         for tweet in completion_request.response["choices"]:
-            print("\n----------")
-            print("\n\t{}\n".format(tweet.text))
-            print("\n----------")
+            print("\n\t{}".format(tweet.text))
+        print("----------\n")
 
 def get_prompt():
     invalid_prompt = True
@@ -163,4 +163,5 @@ def validate_input(query):
 
 if __name__ == "__main__":
     # create_training_file()
-    create_completion_request()
+    # create_completion_request()
+    compare_completions()
