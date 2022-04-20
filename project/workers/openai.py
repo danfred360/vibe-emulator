@@ -2,13 +2,13 @@ import os
 import openai
 
 class CompletionRequest:
-    def __init__(self, prompt):
-        models = ['curie:ft-personal-2022-04-20-14-53-01', 'curie:ft-personal:dril-2022-04-20-15-42-28']
+    def __init__(self, model, prompt, n=1):
         try:
             self.response = openai.Completion.create(
-                model=models[1],
+                model=model,
                 prompt=prompt,
-                max_tokens=70
+                max_tokens=70,
+                n=n
             )
         except Exception as e:
             print("Exception occured while attempting completion request: {}".format(e))

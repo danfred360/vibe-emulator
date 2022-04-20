@@ -1,0 +1,90 @@
+dpfrederick in vibe-emulator on   main ❯ v-run
+Enter the @ of the account you'd like to emulate --> elonmusk
+
+        @elonmusk
+        Confirm? (y/n) --> y
+
+User Lookup Response: {
+    "data": [
+        {
+            "created_at": "2009-06-02T20:12:29.000Z",
+            "description": "",
+            "id": "44196397",
+            "name": "Elon Musk",
+            "username": "elonmusk"
+        }
+    ]
+}
+
+
+        ./outputs/training-sets/user-elonmusk-04-20-2022_13-00-31.jsonl
+        Confirm? (y/n) --> y
+Exception occurred gathering tweets (assumed no next page in response - x = 0): 'next_token'
+
+
+Successfully outputed 535 tweets to ./outputs/training-sets/user-elonmusk-04-20-2022_13-00-31.jsonl...
+
+dpfrederick in vibe-emulator on   main ❯ openai tools fine_tunes.prepare_data -f ./outputs/training-sets/user-elonmusk-04-20-2022_13-00-31.jsonl 
+Analyzing...
+
+- Your file contains 535 prompt-completion pairs
+- All prompts end with suffix ` \n\n###\n\n`
+- All completions end with suffix ` \n`
+  WARNING: Some of your completions contain the suffix ` 
+` more than once. We suggest that you review your completions and add a unique ending
+
+No remediations found.
+
+You can use your file for fine-tuning:
+> openai api fine_tunes.create -t "./outputs/training-sets/user-elonmusk-04-20-2022_13-00-31.jsonl"
+
+After you’ve fine-tuned a model, remember that your prompt has to end with the indicator string ` \n\n###\n\n` for the model to start generating completions, rather than continuing with the prompt. Make sure to include `stop=[" \n"]` so that the generated texts ends at the expected place.
+Once your model starts training, it'll approximately take 9.79 minutes to train a `curie` model, and less for `ada` and `babbage`. Queue will approximately take half an hour per job ahead of you.
+dpfrederick in vibe-emulator on   main ❯ openai api tine_tunes.create -t ./outputs/training-sets/user-elonmusk-04-20-2022_13-00-31.jsonl -m curie --suffix elon
+usage: openai api [-h]
+                  {engines.list,engines.get,engines.update,engines.generate,engines.search,completions.create,models.list,models.get,models.delete,files.create,files.get,files.delete,files.list,search.create_alpha,fine_tunes.list,fine_tunes.create,fine_tunes.get,fine_tunes.results,fine_tunes.events,fine_tunes.follow,fine_tunes.cancel}
+                  ...
+openai api: error: argument {engines.list,engines.get,engines.update,engines.generate,engines.search,completions.create,models.list,models.get,models.delete,files.create,files.get,files.delete,files.list,search.create_alpha,fine_tunes.list,fine_tunes.create,fine_tunes.get,fine_tunes.results,fine_tunes.events,fine_tunes.follow,fine_tunes.cancel}: invalid choice: 'tine_tunes.create' (choose from 'engines.list', 'engines.get', 'engines.update', 'engines.generate', 'engines.search', 'completions.create', 'models.list', 'models.get', 'models.delete', 'files.create', 'files.get', 'files.delete', 'files.list', 'search.create_alpha', 'fine_tunes.list', 'fine_tunes.create', 'fine_tunes.get', 'fine_tunes.results', 'fine_tunes.events', 'fine_tunes.follow', 'fine_tunes.cancel')
+dpfrederick in vibe-emulator on   main ❯ openai api fine_tunes.create -t ./outputs/training-sets/user-elonmusk-04-20-2022_13-00-31.jsonl -m curie --suffix elon
+Upload progress: 100%|█████████████████████████| 74.4k/74.4k [00:00<00:00, 61.8Mit/s]
+Uploaded file from ./outputs/training-sets/user-elonmusk-04-20-2022_13-00-31.jsonl: file-MrpQeUoDdqOTquhclLERry9f
+Created fine-tune: ft-QGYA2xmPh5dXmPtOTLe4Isbk
+Streaming events until fine-tuning is complete...
+
+(Ctrl-C will interrupt the stream, but not cancel the fine-tune)
+[2022-04-20 13:03:09] Created fine-tune: ft-QGYA2xmPh5dXmPtOTLe4Isbk
+[2022-04-20 13:04:35] Fine-tune costs $0.21
+[2022-04-20 13:04:35] Fine-tune enqueued. Queue number: 0
+[2022-04-20 13:04:37] Fine-tune started
+[2022-04-20 13:07:28] Completed epoch 1/4
+[2022-04-20 13:09:31] Completed epoch 2/4
+[2022-04-20 13:11:35] Completed epoch 3/4
+[2022-04-20 13:13:37] Completed epoch 4/4
+[2022-04-20 13:13:59] Uploaded model: curie:ft-personal:elon-2022-04-20-17-13-57
+[2022-04-20 13:14:02] Uploaded result file: file-sILnsiRqtM0wWeIU1c0WJhui
+[2022-04-20 13:14:03] Fine-tune succeeded
+
+Job complete! Status: succeeded 🎉
+Try out your fine-tuned model:
+
+openai api completions.create -m curie:ft-personal:elon-2022-04-20-17-13-57 -p <YOUR_PROMPT>
+dpfrederick in vibe-emulator on   main ❯ v-run
+Enter desired prompt --> Bitcoin is going
+
+        Desired prompt: Bitcoin is going
+        Confirm? (y/n) --> y
+{
+  "choices": [
+    {
+      "finish_reason": "length",
+      "index": 0,
+      "logprobs": null,
+      "text": "  Bitcoin is going pretty crazy \n\nSomeone please buy me a bike \ud83d\udc89 \n\nFront fork \ud83d\ude4c \n\nPayment \ud83d\udcb1 \ud83d\udcb1 \ud83d\udcb1 \ud83d\udcb1 \n\n\ud83d\udcb1\ud83d\udcb1 \ud83d\udcb1 \ud83d\udcb1 \ud83d\udcb1 \n\nEven taller bars \ud83e\udd22"
+    }
+  ],
+  "created": 1650474954,
+  "id": "cmpl-4z8Dic1KaW5lkgrlSHKVqraPmTWya",
+  "model": "curie:ft-personal:elon-2022-04-20-17-13-57",
+  "object": "text_completion"
+}
+dpfrederick in vibe-emulator on   main ❯ 

@@ -17,7 +17,7 @@ v-init
 # to run
 v-run
 ```
-
+**This will run whatever method is in the __main__() function, so you'll need to change this to suit what you want to do before running.**
 ## Training Model
 Prepare training file
 ```bash

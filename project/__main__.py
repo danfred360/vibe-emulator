@@ -4,15 +4,49 @@ from datetime import datetime
 import json, jsonlines
 
 def create_completion_request():
-    completion_request = CompletionRequest(get_prompt())
-    print(completion_request.response)
+    models = [
+        'curie:ft-personal-2022-04-20-14-53-01',
+        'curie:ft-personal:dril-2022-04-20-15-42-28',
+        'curie:ft-personal:elon-2022-04-20-17-13-57',
+        'curie:ft-personal:libsoftiktok-2022-04-20-17-49-25'
+    ]
+
+    prompt = get_prompt()
+    model = models[3]
+    completion_request = CompletionRequest(model, prompt, 3)
+    print("\nOutput for model {}:\n".format(model))
+    for tweet in completion_request.response["choices"]:
+        print("\n----------")
+        print("\n\t{}\n".format(tweet.text))
+        print("\n----------")
+
+def compare_completions():
+    models = [
+            'curie:ft-personal:elon-2022-04-20-17-13-57',
+
+            ]
+
+    unused_models = [
+        'curie:ft-personal-2022-04-20-14-53-01',
+        'curie:ft-personal:dril-2022-04-20-15-42-28'
+    ]
+
+    prompt = get_prompt()
+
+    for model in models:
+        completion_request = CompletionRequest(model, prompt, 1)
+        print("\nOutput for model {}:\n".format(model))
+        for tweet in completion_request.response["choices"]:
+            print("\n----------")
+            print("\n\t{}\n".format(tweet.text))
+            print("\n----------")
 
 def get_prompt():
     invalid_prompt = True
     while invalid_prompt:
         query = input("Enter desired prompt --> ")
         invalid_prompt = validate_input("Desired prompt: {}".format(query))
-    return query
+    return query + " \n\n###\n\n"
 
 def create_training_file():
     # get @ of twitter account
@@ -77,17 +111,19 @@ def export_training_set(output_path, user_id):
     try:
         tweet_lookup = TweetLookup(user_id, 100) # 100
         tweet_lookup_responses = [tweet_lookup.response]
-        pagination_token = json.loads(tweet_lookup.response)["meta"]["next_token"]
-
-        while x >= 0:
-            new_tweet_lookup = TweetLookup(user_id, 100, pagination_token) # 100
-            tweet_lookup_responses.append(new_tweet_lookup.response)
-            try:
-                pagination_token = json.loads(new_tweet_lookup.response)["meta"]["next_token"]
-            except Exception as e:
-                print("Exception occurred gathering tweets (assumed no next page in response): {}\n".format(e))
-                break
-            x -= 1
+        try:
+            pagination_token = json.loads(tweet_lookup.response)["meta"]["next_token"]
+            while x >= 0:
+                new_tweet_lookup = TweetLookup(user_id, 100, pagination_token) # 100
+                tweet_lookup_responses.append(new_tweet_lookup.response)
+                try:
+                    pagination_token = json.loads(new_tweet_lookup.response)["meta"]["next_token"]
+                except Exception as e:
+                    print("Exception occurred gathering tweets (assumed no next page in response - x = {}): {}\n".format(x, e))
+                    break
+                x -= 1
+        except Exception as e:
+            print("Exception occurred gathering tweets (assumed no next page in response - x = {}): {}\n".format(x, e))
 
     except Exception as e:
         print("Exception occurred gathering tweets: {}\n".format(e))
@@ -98,15 +134,19 @@ def export_training_set(output_path, user_id):
         with jsonlines.open(output_path, 'w') as outfile:
             for response in tweet_lookup_responses:
                 for tweet in json.loads(response)["data"]:
-                    prompt = ""
-                    for word in tweet["text"].split()[:3]:
-                        prompt += " " + word
-                    new_jsonl_line = {"prompt": prompt, "completion": " " + tweet["text"] + " END"}
-                    outfile.write(new_jsonl_line)
-                    num_tweets += 1
+                    try: 
+                        first_three_words = tweet["text"].split()[:3]
+                        prompt = "{} {} {} \n\n###\n\n".format(first_three_words[0], first_three_words[1], first_three_words[2])
+                        completion = " {} \n".format(tweet["text"])
+                        new_jsonl_line = {"prompt": prompt, "completion": " " + completion}
+                        outfile.write(new_jsonl_line)
+                        num_tweets += 1
+                    except:
+                        continue
             print("\nSuccessfully outputed {} tweets to {}...\n".format(num_tweets, output_path))
     except Exception as e:
-        print("Exception occurred exporting tweets to JSONL trianing set: {}\n".format(e))
+        print("Exception occurred exporting tweets to JSONL training set: {}\n".format(e))
+        print(tweet_lookup_responses)
         exit()
 
 def validate_input(query):
