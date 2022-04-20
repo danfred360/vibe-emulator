@@ -1,0 +1,75 @@
+┌──(venv)(frosty㉿DESKTOP-GLAMV3O)-[/mnt/c/Users/danny/Documents/code/openai/vibe-emulator]
+└─$ v-run
+Enter the @ of the account you'd like to emulate --> dan_fred360
+
+        @dan_fred360
+        Confirm? (y/n) --> y
+
+User Lookup Response: {
+    "data": [
+        {
+            "created_at": "2017-02-16T21:04:13.000Z",
+            "description": "psu class of idk anymore",
+            "id": "832334793996132352",
+            "name": "daniel \u203c\ufe0f",
+            "username": "dan_fred360"
+        }
+    ]
+}
+
+
+        ./outputs/tweets/04-20-2022_00-00-29-tweets-for-user-id-832334793996132352.json
+        Confirm? (y/n) --> y
+Successfully outputed to ./outputs/tweets/04-20-2022_00-00-29-tweets-for-user-id-832334793996132352.json...
+
+Response: {
+    "data": [
+        {
+            "id": "1516604739538112523",
+            "text": "got through the first half of reservoir dogs before my roommate decided he'd rather 
+be playing league of legends; this shit would not fly in my dad's house"
+        },
+        {
+            "id": "1515497056248418310",
+            "text": "@fearofsalt https://t.co/VlpZ7IUNkR"
+        },
+        {
+            "id": "1514943080960561154",
+            "text": "@ashtxn_mae I would pick that off the display shelf for sure"
+        },
+        {
+            "id": "1514256255224889348",
+            "text": "RT @gf_256: average api consumer vs average web etiquette ignorer https://t.co/ILv0HeeeKg"
+        },
+        {
+            "id": "1513994458068656135",
+            "text": "@fearofsalt https://t.co/UR3pmOw1Pv"
+        },
+        {
+            "id": "1513957024295440385",
+            "text": "lmao https://t.co/kvV2JGbtmo"
+        },
+        {
+            "id": "1513244140691152902",
+            "text": "@wheezywaiter https://t.co/haw4wUaFxv"
+        },
+        {
+            "id": "1511716706514882560",
+            "text": "@fearofsalt bro"
+        },
+        {
+            "id": "1510612586177388545",
+            "text": "RT @cottoncandaddy: I just learned that if a hermit crab finds a new shell that is too big it will wait for other hermit crabs who need new\u2026"
+        },
+        {
+            "id": "1509898559272927241",
+            "text": "RT @PennStateBerks: #PSUberks student/alumni led startup CarToCamp was selected as 1 of 6 student startups into the 2022 #InventPennState S\u2026"
+        }
+    ],
+    "meta": {
+        "newest_id": "1516604739538112523",
+        "next_token": "7140dibdnow9c7btw420k2ozj7o0li3a2ok0fxmw7dlbl",
+        "oldest_id": "1509898559272927241",
+        "result_count": 10
+    }
+}
