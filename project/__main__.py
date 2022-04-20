@@ -8,12 +8,13 @@ def create_completion_request():
         'curie:ft-personal-2022-04-20-14-53-01',
         'curie:ft-personal:dril-2022-04-20-15-42-28',
         'curie:ft-personal:elon-2022-04-20-17-13-57',
-        'curie:ft-personal:libsoftiktok-2022-04-20-17-49-25'
+        'curie:ft-personal:libsoftiktok-2022-04-20-17-49-25',
+        'curie:ft-personal:dojacat-2022-04-20-22-06-20'
     ]
 
     prompt = get_prompt()
-    model = models[3]
-    completion_request = CompletionRequest(model, prompt, 3)
+    model = models[2]
+    completion_request = CompletionRequest(model, prompt, 5)
     print("\nOutput for model {}:\n".format(model))
     for tweet in completion_request.response["choices"]:
         print("\n----------")
@@ -24,7 +25,8 @@ def compare_completions():
     models = [
         'curie:ft-personal:dril-2022-04-20-15-42-28',
         'curie:ft-personal:elon-2022-04-20-17-13-57',
-        'curie:ft-personal:libsoftiktok-2022-04-20-17-49-25'
+        'curie:ft-personal:libsoftiktok-2022-04-20-17-49-25',
+        'curie:ft-personal:dojacat-2022-04-20-22-06-20'
     ]
 
     unused_models = [
@@ -163,5 +165,5 @@ def validate_input(query):
 
 if __name__ == "__main__":
     # create_training_file()
-    # create_completion_request()
-    compare_completions()
+    create_completion_request()
+    # compare_completions()

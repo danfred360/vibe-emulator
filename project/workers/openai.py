@@ -8,7 +8,8 @@ class CompletionRequest:
                 model=model,
                 prompt=prompt,
                 max_tokens=70,
-                n=n
+                n=n,
+                stop="\n"
             )
         except Exception as e:
             print("Exception occured while attempting completion request: {}".format(e))

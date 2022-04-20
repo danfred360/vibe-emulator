@@ -2,6 +2,16 @@ import requests
 import os
 import json
 
+class BearerOAuth(requests.auth.AuthBase):
+    def __call__(self, r):
+        """
+        Method required by bearer token authentication.
+        """
+
+        r.headers["Authorization"] = f"Bearer {os.environ.get('TWITTER_BEARER_TOKEN')}"
+        r.headers["User-Agent"] = "v2UserLookupPython"
+        return r
+
 class TweetLookup:
     def __init__(self, authour_id, max_results, pagination_token=None):
         # To set your enviornment variables in your terminal run the following line:
@@ -66,7 +76,8 @@ class UserLookup:
     def __init__(self, username_query):
         # To set your enviornment variables in your terminal run the following line:
         # export 'BEARER_TOKEN'='<your_bearer_token>'
-        self.bearer_token = os.environ.get("TWITTER_BEARER_TOKEN")
+        # self.bearer_token = os.environ.get("TWITTER_BEARER_TOKEN")
+        self.bearer_token = os.getenv("TWITTER_BEARER_TOKEN")
         
         url = self.create_url(username_query)
         self.response = self.connect_to_endpoint(url)
@@ -96,7 +107,7 @@ class UserLookup:
 
 
     def connect_to_endpoint(self, url):
-        response = requests.request("GET", url, auth=self.bearer_oauth,)
+        response = requests.request("GET", url, auth=BearerOAuth())
         status_code = response.status_code # do nothing
         if response.status_code != 200:
             raise Exception(
