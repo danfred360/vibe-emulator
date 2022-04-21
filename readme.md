@@ -11,7 +11,7 @@
 
 **For now this project can be used by commenting and un-commenting the desired function in `project\__main__.py.__main__()` before running `v-run`.**
 
-## Running project to generate training JSONL
+## Running project
 First you'll need to create a .secret file emulating .secret-example with your Twitter bearer token and your OpenAI API key. You can obtain keys here:
 - [Twitter API](https://developer.twitter.com/en/docs/twitter-api)
 - [OpenAI API](https://openai.com/api/)

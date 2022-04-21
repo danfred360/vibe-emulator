@@ -5,22 +5,7 @@ import json, jsonlines
 
 def create_completion_request():
     models = [
-        'curie:ft-personal-2022-04-20-14-53-01',
-        'curie:ft-personal:dril-2022-04-20-15-42-28',
-        'curie:ft-personal:elon-2022-04-20-17-13-57',
-        'curie:ft-personal:libsoftiktok-2022-04-20-17-49-25',
-        'curie:ft-personal:dojacat-2022-04-20-22-06-20',
-        'curie:ft-personal:tuckercarlson-2022-04-21-00-47-52',
-        'curie:ft-personal:h3h3productions-2022-04-21-01-06-50',
-        'curie:ft-personal:jordanbpeterson-2022-04-21-01-18-02',
-        'curie:ft-personal:berniesanders-2022-04-21-01-43-04',
-        'curie:ft-personal:joebiden-2022-04-21-02-34-22',
-        'curie:ft-personal:drilv2-2022-04-21-02-55-13',
-        'curie:ft-personal:keemstar-2022-04-21-03-11-19',
-        'curie:ft-personal:kanyewest-2022-04-21-03-31-32',
-        'curie:ft-personal:dan-fred360-2022-04-21-03-43-25',
-        'curie:ft-personal:comicdavesmith-2022-04-21-04-06-10',
-        'curie:ft-personal:ggreenwald-2022-04-21-04-20-24'
+        
     ]
 
     model = models[14]
@@ -37,25 +22,7 @@ def create_completion_request():
 
 def compare_completions():
     models = [
-        # 'curie:ft-personal:dril-2022-04-20-15-42-28',
-        'curie:ft-personal:elon-2022-04-20-17-13-57',
-        # 'curie:ft-personal:libsoftiktok-2022-04-20-17-49-25',
-        # 'curie:ft-personal:dojacat-2022-04-20-22-06-20',
-        'curie:ft-personal:tuckercarlson-2022-04-21-00-47-52',
-        # 'curie:ft-personal:h3h3productions-2022-04-21-01-06-50',
-        'curie:ft-personal:jordanbpeterson-2022-04-21-01-18-02',
-        'curie:ft-personal:berniesanders-2022-04-21-01-43-04',
-        'curie:ft-personal:joebiden-2022-04-21-02-34-22',
-        'curie:ft-personal:drilv2-2022-04-21-02-55-13',
-        # 'curie:ft-personal:keemstar-2022-04-21-03-11-19',
-        # 'curie:ft-personal:kanyewest-2022-04-21-03-31-32',
-        'curie:ft-personal:dan-fred360-2022-04-21-03-43-25',
-        'curie:ft-personal:comicdavesmith-2022-04-21-04-06-10',
-        'curie:ft-personal:ggreenwald-2022-04-21-04-20-24'
-    ]
-
-    unused_models = [
-        'curie:ft-personal-2022-04-20-14-53-01',
+        
     ]
 
     print("----- Compare known reliable model responses -----")
@@ -191,6 +158,7 @@ def validate_input(query):
 
 
 if __name__ == "__main__":
-    # create_training_file()
+    create_training_file()
+    # add names of models to models array in methods before runnint:
     # create_completion_request()
-    compare_completions()
+    # compare_completions()
