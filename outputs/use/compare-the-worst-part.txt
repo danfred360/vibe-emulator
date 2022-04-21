@@ -1,0 +1,88 @@
+┌──(venv)(frosty㉿DESKTOP-GLAMV3O)-[/mnt/c/Users/danny/Documents/code/openai/vibe-emulator]
+└─$ v-run
+----- Compare known reliable model responses -----
+Enter desired prompt --> The worst part
+
+        Desired prompt: The worst part
+        Confirm? (y/n) --> y
+
+----------
+
+Output for model curie:ft-personal:elon-2022-04-20-17-13-57:
+
+
+          The worst part is there’s no hope left whatsoever anyway, so … life just goes on
+----------
+
+
+----------
+
+Output for model curie:ft-personal:tuckercarlson-2022-04-21-00-47-52:
+
+
+          The worst part about all of this is that it's clear to anyone with a brain that what they're doing has the opposite effect. Their hysteria and attacks are making things worse. This isn't a conspiracy. It's a political fact. Quite unrelated to anything else they say or do.
+----------
+
+
+----------
+
+Output for model curie:ft-personal:jordanbpeterson-2022-04-21-01-18-02:
+
+
+          The worst part of this truly is that @JustinTrudeau is so utterly stupid that he believes what he is 
+told. https://t.co/tlMI5Gh5Ok
+----------
+
+
+----------
+
+Output for model curie:ft-personal:berniesanders-2022-04-21-01-43-04:
+
+
+          The worst part about all of this is that under the leadership of Vladimir Putin, Russia became a nuclear state.
+----------
+
+
+----------
+
+Output for model curie:ft-personal:joebiden-2022-04-21-02-34-22:
+
+
+          The worst part is, this is not an infrastructure crisis—this is an economic crisis. It’s a jobs crisis. It’s a wages crisis.
+----------
+
+
+----------
+
+Output for model curie:ft-personal:drilv2-2022-04-21-02-55-13:
+
+
+          The worst part is, it actually looks good.  Now all i have to do is figure out where all the subtargets are hiding
+----------
+
+
+----------
+
+Output for model curie:ft-personal:dan-fred360-2022-04-21-03-43-25:
+
+
+          The worst part of the year is over and we still don't have netflix in cars https://t.co/ylXHEa9Ae7   
+----------
+
+
+----------
+
+Output for model curie:ft-personal:comicdavesmith-2022-04-21-04-06-10:
+
+
+          The worst part about all this nonsense is that it creates a hysteria where people don’t actually look at the actual data. In fact, the covid data actually shows rapid improvements in all 3 measures starting in 2016: https://t.co/jKpEt8wTMS
+----------
+
+
+----------
+
+Output for model curie:ft-personal:ggreenwald-2022-04-21-04-20-24:
+
+
+          The worst part of all this is how proud corrupt liberal journalists are of their self-confessed lying. They believe they've earned the right to do so to the public and no one can question it.
+----------

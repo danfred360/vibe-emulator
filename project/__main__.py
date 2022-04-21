@@ -18,10 +18,12 @@ def create_completion_request():
         'curie:ft-personal:drilv2-2022-04-21-02-55-13',
         'curie:ft-personal:keemstar-2022-04-21-03-11-19',
         'curie:ft-personal:kanyewest-2022-04-21-03-31-32',
-        'curie:ft-personal:dan-fred360-2022-04-21-03-43-25'
+        'curie:ft-personal:dan-fred360-2022-04-21-03-43-25',
+        'curie:ft-personal:comicdavesmith-2022-04-21-04-06-10',
+        'curie:ft-personal:ggreenwald-2022-04-21-04-20-24'
     ]
 
-    model = models[13]
+    model = models[14]
     print("----- Emulate {}'s Vibe -----".format(model))
 
     prompt = get_prompt()
@@ -47,7 +49,9 @@ def compare_completions():
         'curie:ft-personal:drilv2-2022-04-21-02-55-13',
         # 'curie:ft-personal:keemstar-2022-04-21-03-11-19',
         # 'curie:ft-personal:kanyewest-2022-04-21-03-31-32',
-        'curie:ft-personal:dan-fred360-2022-04-21-03-43-25'
+        'curie:ft-personal:dan-fred360-2022-04-21-03-43-25',
+        'curie:ft-personal:comicdavesmith-2022-04-21-04-06-10',
+        'curie:ft-personal:ggreenwald-2022-04-21-04-20-24'
     ]
 
     unused_models = [
