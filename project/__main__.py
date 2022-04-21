@@ -26,18 +26,20 @@ def create_completion_request(num_responses):
      } # stop="\n"
 
     new_models = {
-        'theonion': 'curie:ft-personal:theonion-2022-04-21-19-19-28'
+        'theonion': 'curie:ft-personal:theonion-2022-04-21-19-19-28',
+        'GenisWon' : 'curie:ft-personal:geniswon-2022-04-21-19-34-24',
+        'fearofsalt' : 'curie:ft-personal:fearofsalt-2022-04-21-20-17-17'
     } # stop="###"
 
-    emulate_vibe = 'theonion'
+    emulate_vibe = 'keyon'
 
-    model = new_models[emulate_vibe]# models[8]
+    model = models[emulate_vibe]# models[8]
 
     print("----- Emulate {}'s Vibe -----".format(emulate_vibe))
 
     prompt = get_prompt()
 
-    completion_request = CompletionRequest(model=model, prompt=prompt, stop_phrase="###", n=num_responses) # "\n"
+    completion_request = CompletionRequest(model=model, prompt=prompt, stop_phrase="\n", n=num_responses) # "\n" or "###"
     print("\nOutput for model {}:".format(model))
     for tweet in completion_request.response["choices"]:
         print("----------")
@@ -62,8 +64,14 @@ def compare_completions():
         # 'curie:ft-personal:keemstar-2022-04-21-03-11-19',
         # 'curie:ft-personal:kanyewest-2022-04-21-03-31-32',
         # 'curie:ft-personal:bts-twt-2022-04-21-18-36-39',
-        # 'curie:ft-personal:keyon-2022-04-21-18-47-47',
+        'curie:ft-personal:keyon-2022-04-21-18-47-47',
         'curie:ft-personal:dan-fred360-2022-04-21-03-43-25'
+    ]
+
+    new_models = [
+        'curie:ft-personal:theonion-2022-04-21-19-19-28',
+        'curie:ft-personal:geniswon-2022-04-21-19-34-24',
+        'curie:ft-personal:fearofsalt-2022-04-21-20-17-17'
     ]
 
     print("----- Compare known reliable model responses -----")
@@ -71,7 +79,7 @@ def compare_completions():
     prompt = get_prompt()
 
     for model in models:
-        completion_request = CompletionRequest(model=model, prompt=prompt, stop_phrase="\n", n=1)
+        completion_request = CompletionRequest(model=model, prompt=prompt, stop_phrase="\n", n=1) # "\n"
         print("----------")
         print("\nOutput for model {}:\n".format(model))
         for tweet in completion_request.response["choices"]:
@@ -202,5 +210,5 @@ def validate_input(query):
 if __name__ == "__main__":
     # create_training_file()
     # add names of models to models array in methods before running:
-    create_completion_request(10)
-    # compare_completions()
+    # create_completion_request(10)
+    compare_completions()
