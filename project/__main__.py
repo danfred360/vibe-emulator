@@ -3,33 +3,41 @@ from workers.openai import CompletionRequest
 from datetime import datetime
 import json, jsonlines
 
-def create_completion_request():
-    models = [
-        'curie:ft-personal-2022-04-20-14-53-01',
-        'curie:ft-personal:dril-2022-04-20-15-42-28',
-        'curie:ft-personal:elon-2022-04-20-17-13-57',
-        'curie:ft-personal:libsoftiktok-2022-04-20-17-49-25',
-        'curie:ft-personal:dojacat-2022-04-20-22-06-20',
-        'curie:ft-personal:tuckercarlson-2022-04-21-00-47-52',
-        'curie:ft-personal:h3h3productions-2022-04-21-01-06-50',
-        'curie:ft-personal:jordanbpeterson-2022-04-21-01-18-02',
-        'curie:ft-personal:berniesanders-2022-04-21-01-43-04',
-        'curie:ft-personal:joebiden-2022-04-21-02-34-22',
-        'curie:ft-personal:drilv2-2022-04-21-02-55-13',
-        'curie:ft-personal:keemstar-2022-04-21-03-11-19',
-        'curie:ft-personal:kanyewest-2022-04-21-03-31-32',
-        'curie:ft-personal:ggreenwald-2022-04-21-04-20-24',
-        'curie:ft-personal:comicdavesmith-2022-04-21-04-06-10',
-        'curie:ft-personal:bts-twt-2022-04-21-18-36-39',
-        'curie:ft-personal:dan-fred360-2022-04-21-03-43-25'
-    ]
+def create_completion_request(num_responses):
+    models = {
+        'justin-t' : 'curie:ft-personal-2022-04-20-14-53-01',
+        'dril-old': 'curie:ft-personal:dril-2022-04-20-15-42-28',
+        'elon': 'curie:ft-personal:elon-2022-04-20-17-13-57',
+        'libsoftiktok' : 'curie:ft-personal:libsoftiktok-2022-04-20-17-49-25',
+        'dojacat' : 'curie:ft-personal:dojacat-2022-04-20-22-06-20',
+        'tuckercarlson' : 'curie:ft-personal:tuckercarlson-2022-04-21-00-47-52',
+        'h3h3' : 'curie:ft-personal:h3h3productions-2022-04-21-01-06-50',
+        'jordanbpeterson' : 'curie:ft-personal:jordanbpeterson-2022-04-21-01-18-02',
+        'berniesanders' : 'curie:ft-personal:berniesanders-2022-04-21-01-43-04',
+        'joebiden' : 'curie:ft-personal:joebiden-2022-04-21-02-34-22',
+        'drilv2' : 'curie:ft-personal:drilv2-2022-04-21-02-55-13',
+        'keemstar' : 'curie:ft-personal:keemstar-2022-04-21-03-11-19',
+        'kanyewest' : 'curie:ft-personal:kanyewest-2022-04-21-03-31-32',
+        'ggreenwald' : 'curie:ft-personal:ggreenwald-2022-04-21-04-20-24',
+        'comicdavesmith' : 'curie:ft-personal:comicdavesmith-2022-04-21-04-06-10',
+        'bts-twt' : 'curie:ft-personal:bts-twt-2022-04-21-18-36-39',
+        'keyon' : 'curie:ft-personal:keyon-2022-04-21-18-47-47',
+        'danfred360' : 'curie:ft-personal:dan-fred360-2022-04-21-03-43-25'
+     } # stop="\n"
 
-    model = models[15]
-    print("----- Emulate {}'s Vibe -----".format(model))
+    new_models = {
+        'theonion': 'curie:ft-personal:theonion-2022-04-21-19-19-28'
+    } # stop="###"
+
+    emulate_vibe = 'theonion'
+
+    model = new_models[emulate_vibe]# models[8]
+
+    print("----- Emulate {}'s Vibe -----".format(emulate_vibe))
 
     prompt = get_prompt()
 
-    completion_request = CompletionRequest(model, prompt, 5)
+    completion_request = CompletionRequest(model=model, prompt=prompt, stop_phrase="###", n=num_responses) # "\n"
     print("\nOutput for model {}:".format(model))
     for tweet in completion_request.response["choices"]:
         print("----------")
@@ -54,6 +62,7 @@ def compare_completions():
         # 'curie:ft-personal:keemstar-2022-04-21-03-11-19',
         # 'curie:ft-personal:kanyewest-2022-04-21-03-31-32',
         # 'curie:ft-personal:bts-twt-2022-04-21-18-36-39',
+        # 'curie:ft-personal:keyon-2022-04-21-18-47-47',
         'curie:ft-personal:dan-fred360-2022-04-21-03-43-25'
     ]
 
@@ -62,7 +71,7 @@ def compare_completions():
     prompt = get_prompt()
 
     for model in models:
-        completion_request = CompletionRequest(model, prompt, 1)
+        completion_request = CompletionRequest(model=model, prompt=prompt, stop_phrase="\n", n=1)
         print("----------")
         print("\nOutput for model {}:\n".format(model))
         for tweet in completion_request.response["choices"]:
@@ -193,5 +202,5 @@ def validate_input(query):
 if __name__ == "__main__":
     # create_training_file()
     # add names of models to models array in methods before running:
-    # create_completion_request()
-    compare_completions()
+    create_completion_request(10)
+    # compare_completions()

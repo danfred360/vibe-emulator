@@ -2,14 +2,14 @@ import os
 import openai
 
 class CompletionRequest:
-    def __init__(self, model, prompt, n=1):
+    def __init__(self, model, prompt, stop_phrase, n=1):
         try:
             self.response = openai.Completion.create(
                 model=model,
                 prompt=prompt,
                 max_tokens=70,
                 n=n,
-                stop="\n"
+                stop=stop_phrase
             )
         except Exception as e:
             print("Exception occured while attempting completion request: {}".format(e))
