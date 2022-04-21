@@ -238,7 +238,7 @@ walks
 ```
 
 ## Documentation
-[Open Api Project Docs](openai.md)
+[OpenAI API Project Docs](openai.md)
 
 ## Resources:
 - [OpenAI API](https://openai.com/api/)
