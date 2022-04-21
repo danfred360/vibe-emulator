@@ -1,0 +1,36 @@
+┌──(venv)(frosty㉿DESKTOP-GLAMV3O)-[/mnt/c/Users/danny/Documents/code/openai/vibe-emulator]
+└─$ v-run
+----- Emulate curie:ft-personal:h3h3productions-2022-04-21-01-06-50's Vibe -----
+Enter desired prompt --> I'm so done with
+
+        Desired prompt: I'm so done with
+        Confirm? (y/n) --> y
+
+Output for model curie:ft-personal:h3h3productions-2022-04-21-01-06-50:
+
+----------
+          I'm so done with the "Israel did it" covid shit. It's 2018, there are better ways to 
+          secure an interview. Get them on air, not on children.
+----------
+
+----------
+          I'm so done with the snow I'm going to Los Alamos to watch Andy bring John 
+          back to his senses https://t.co/l6cPFS3UBq
+----------
+
+----------
+          I'm so done with this petition. It's pointless, contradictory and pointless again. 
+          I mean if it was truly pointless, not pointless like all the other pointless 
+          petitions that get censored, then every time we tried to start a new petition 
+          it would be DEmma decreem, which is obviously t true
+----------
+
+----------
+          I'm so done with the @RyanKavanaugh show, I can no longer support David and Butler, 
+          they have been lying to me and to their guests for too long, I've had enough I'm 
+          moving on to another show - sorry guys
+----------
+
+----------
+          I'm so done with the keto diet I'm eating Ding Dong Assholes again 😞
+----------
