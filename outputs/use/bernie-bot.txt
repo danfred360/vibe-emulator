@@ -1,0 +1,46 @@
+┌──(venv)(frosty㉿DESKTOP-GLAMV3O)-[/mnt/c/Users/danny/Documents/code/openai/vibe-emulator]
+└─$ v-run
+----- Emulate curie:ft-personal:berniesanders-2022-04-21-01-43-04's Vibe -----
+Enter desired prompt --> I think that
+
+        Desired prompt: I think that
+        Confirm? (y/n) --> y
+
+Output for model curie:ft-personal:berniesanders-2022-04-21-01-43-04:
+
+
+----------
+
+          I think that finally, after all these years, the time has come for a huge new federal bill to finally meet the basic needs of this country's vision impaired population.
+
+
+----------
+
+----------
+
+          I think that it is a cruel joke to call Kellogg's "The Pride of the Nation of Pitts &amp; Kellogg's, 
+PA." Their workers are not 'prestige' workers. They are workers who are sick, who are elderly, who are children. That's not 'the pride of the nation.' https://
+
+
+----------
+
+----------
+
+          I think that it is time to end the greed of the pharmaceutical industry.
+
+
+----------
+
+----------
+
+          I think that we should apply the same progressive tax principles to profits as we do to wages.       
+
+
+----------
+
+----------
+
+          I think that it is beyond time that we deal with our grotesquely dysfunctional mental health system in this country and enact desperately needed reforms. We have the highest suicide rate of any major country. Let's get this done. https://t.co/lof3rW9utr
+
+
+----------

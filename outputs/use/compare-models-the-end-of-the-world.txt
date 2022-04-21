@@ -1,0 +1,79 @@
+┌──(venv)(frosty㉿DESKTOP-GLAMV3O)-[/mnt/c/Users/danny/Documents/code/openai/vibe-emulator]
+└─$ v-run
+----- Compare known reliable model responses -----
+Enter desired prompt --> Humanity's greatest threat
+
+        Desired prompt: Humanity's greatest threat
+        Confirm? (y/n) --> y
+
+----------
+
+Output for model curie:ft-personal:dril-2022-04-20-15-42-28:
+
+
+
+----------
+
+
+----------
+
+Output for model curie:ft-personal:elon-2022-04-20-17-13-57:
+
+
+          Humanity's greatest threat is not aliens, but apathy &amp; depression
+----------
+
+
+----------
+
+Output for model curie:ft-personal:libsoftiktok-2022-04-20-17-49-25:
+
+
+          Humanity's greatest threat right now are unvaccinated children. We’re seeing a major outbreak of mumps in children who have never been vaccinated. https://t.co/WnQQkkvxfH
+----------
+
+
+----------
+
+Output for model curie:ft-personal:dojacat-2022-04-20-22-06-20:
+
+
+          Humanity's greatest threat https://t.co/crvn8PyBks
+----------
+
+
+----------
+
+Output for model curie:ft-personal:tuckercarlson-2022-04-21-00-47-52:
+
+
+          Humanity's greatest threat: the left thought it was Trump. It's still the left. Tonight we have Larry King. Tune in! #Tucker @FoxNews
+----------
+
+
+----------
+
+Output for model curie:ft-personal:h3h3productions-2022-04-21-01-06-50:
+
+
+          Humanity's greatest threat is not terrorism or nuclear war, it's environmental collapse and our unwillingness to change our lifestyle
+----------
+
+
+----------
+
+Output for model curie:ft-personal:jordanbpeterson-2022-04-21-01-18-02:
+
+
+          Humanity's greatest threat is itself https://t.co/N9X9pbSC1F
+----------
+
+
+----------
+
+Output for model curie:ft-personal:berniesanders-2022-04-21-01-43-04:
+
+
+          Humanity's greatest threat is not terrorism. It is climate change and a fossil fuel industry that does not want to give up the trillions of dollars in profits they are guaranteed to make for the next 17 years.   
+----------
+
