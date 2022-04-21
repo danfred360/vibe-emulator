@@ -5,24 +5,56 @@ import json, jsonlines
 
 def create_completion_request():
     models = [
-        
+        'curie:ft-personal-2022-04-20-14-53-01',
+        'curie:ft-personal:dril-2022-04-20-15-42-28',
+        'curie:ft-personal:elon-2022-04-20-17-13-57',
+        'curie:ft-personal:libsoftiktok-2022-04-20-17-49-25',
+        'curie:ft-personal:dojacat-2022-04-20-22-06-20',
+        'curie:ft-personal:tuckercarlson-2022-04-21-00-47-52',
+        'curie:ft-personal:h3h3productions-2022-04-21-01-06-50',
+        'curie:ft-personal:jordanbpeterson-2022-04-21-01-18-02',
+        'curie:ft-personal:berniesanders-2022-04-21-01-43-04',
+        'curie:ft-personal:joebiden-2022-04-21-02-34-22',
+        'curie:ft-personal:drilv2-2022-04-21-02-55-13',
+        'curie:ft-personal:keemstar-2022-04-21-03-11-19',
+        'curie:ft-personal:kanyewest-2022-04-21-03-31-32',
+        'curie:ft-personal:ggreenwald-2022-04-21-04-20-24',
+        'curie:ft-personal:comicdavesmith-2022-04-21-04-06-10',
+        'curie:ft-personal:bts-twt-2022-04-21-18-36-39',
+        'curie:ft-personal:dan-fred360-2022-04-21-03-43-25'
     ]
 
-    model = models[14]
+    model = models[15]
     print("----- Emulate {}'s Vibe -----".format(model))
 
     prompt = get_prompt()
 
     completion_request = CompletionRequest(model, prompt, 5)
-    print("\nOutput for model {}:\n".format(model))
+    print("\nOutput for model {}:".format(model))
     for tweet in completion_request.response["choices"]:
-        print("\n----------\n")
+        print("----------")
         print("\t{}".format(tweet.text))
-        print("\n----------")
+        print("----------")
 
 def compare_completions():
     models = [
-        
+        # 'curie:ft-personal-2022-04-20-14-53-01',
+        # 'curie:ft-personal:dril-2022-04-20-15-42-28',
+        'curie:ft-personal:elon-2022-04-20-17-13-57',
+        # 'curie:ft-personal:libsoftiktok-2022-04-20-17-49-25',
+        'curie:ft-personal:dojacat-2022-04-20-22-06-20',
+        'curie:ft-personal:tuckercarlson-2022-04-21-00-47-52',
+        'curie:ft-personal:ggreenwald-2022-04-21-04-20-24',
+        'curie:ft-personal:comicdavesmith-2022-04-21-04-06-10',
+        # 'curie:ft-personal:h3h3productions-2022-04-21-01-06-50',
+        'curie:ft-personal:jordanbpeterson-2022-04-21-01-18-02',
+        'curie:ft-personal:berniesanders-2022-04-21-01-43-04',
+        'curie:ft-personal:joebiden-2022-04-21-02-34-22',
+        'curie:ft-personal:drilv2-2022-04-21-02-55-13',
+        # 'curie:ft-personal:keemstar-2022-04-21-03-11-19',
+        # 'curie:ft-personal:kanyewest-2022-04-21-03-31-32',
+        # 'curie:ft-personal:bts-twt-2022-04-21-18-36-39',
+        'curie:ft-personal:dan-fred360-2022-04-21-03-43-25'
     ]
 
     print("----- Compare known reliable model responses -----")
@@ -31,11 +63,12 @@ def compare_completions():
 
     for model in models:
         completion_request = CompletionRequest(model, prompt, 1)
-        print("\n----------")
+        print("----------")
         print("\nOutput for model {}:\n".format(model))
         for tweet in completion_request.response["choices"]:
-            print("\n\t{}".format(tweet.text))
-        print("----------\n")
+            # tweet_words = tweet.text.split(" ")
+            print("\t{}".format(tweet.text))
+        print("----------")
 
 def get_prompt():
     invalid_prompt = True
@@ -133,7 +166,7 @@ def export_training_set(output_path, user_id):
                     try: 
                         first_three_words = tweet["text"].split()[:3]
                         prompt = "{} {} {} \n\n###\n\n".format(first_three_words[0], first_three_words[1], first_three_words[2])
-                        completion = " {} \n".format(tweet["text"])
+                        completion = " {} ###".format(tweet["text"])
                         new_jsonl_line = {"prompt": prompt, "completion": " " + completion}
                         outfile.write(new_jsonl_line)
                         num_tweets += 1
@@ -158,7 +191,7 @@ def validate_input(query):
 
 
 if __name__ == "__main__":
-    create_training_file()
-    # add names of models to models array in methods before runnint:
+    # create_training_file()
+    # add names of models to models array in methods before running:
     # create_completion_request()
-    # compare_completions()
+    compare_completions()
