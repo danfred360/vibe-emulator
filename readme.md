@@ -1,6 +1,6 @@
 # vibe-emulator
 ## Use
-1. `create_training_file()` will lookup a user by @ on twitter and export a JSONL file composed of three word prompts and resulting tweets to be used to fine tune an OpenAI model.
+1. `create_training_file` will lookup a user by @ on twitter and export a JSONL file composed of three word prompts and resulting tweets to be used to fine tune an OpenAI model.
 
 2. At this point, you can use OpenAI CLI commands to create a fine-tuned model. Once the model is trained you can append it's name to the `models` arrays in the `emulate_vibe()` and `compare_vibes()` in `project.py` as you please.
 
