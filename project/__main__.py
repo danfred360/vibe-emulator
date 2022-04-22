@@ -4,11 +4,11 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv,"hf:n:m:M:",["function="])
     except getopt.GetoptError:
-        print('project.py -f <function>')
+        print('Bad args: "vibe-emulator -h" for help')
         sys.exit(2)
     for opt, arg in opts:
         if opt in ('-h', "--help"):
-            print('project.py -f <function> -n <num_responses> -m <model_name> -M <model_name_array>')
+            print('vibe-emulator -f <function> -n <num_responses> -m <model_name> -M <model_name_array>')
             print('\t-f <function> - str - required - function name\n\t\toptions: ["create_training_file", "emulate_vibe", "compare_vibes"]')
             print('\t-n <num_responses> - int - default 1 - number of responses desired')
             print('\t-m <model_name> - str - default "theonion" - key value name for model')
@@ -31,7 +31,7 @@ def main(argv):
         case "emulate_vibe":
             project.emulate_vibe(num_responses, model_name)
         case "compare_vibes":
-            project.compare_vibes(model_array)
+            project.compare_vibes(num_responses, model_array)
         case _:
             print("Invalid input for -f function flag\n")
             sys.exit(2)

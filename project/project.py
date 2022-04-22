@@ -49,7 +49,7 @@ def emulate_vibe(num_responses=1, model_name_input=default_model_name):
         print("\t{}".format(tweet.text))
         print("-------------------------------")
 
-def compare_vibes(models_input=None):
+def compare_vibes(n, models_input=None):
     if models_input is None:
         models = [
         'curie:ft-personal:theonion-2022-04-21-19-19-28',
@@ -93,7 +93,7 @@ def compare_vibes(models_input=None):
     prompt = get_prompt()
 
     for model in models:
-        completion_request = CompletionRequest(model=model, prompt=prompt, stop_phrase="###", n=3) # "\n"
+        completion_request = CompletionRequest(model=model, prompt=prompt, stop_phrase="###", n=n) # "\n"
         print("------------------------")
         print("\nOutput for model {}:\n".format(model))
         for tweet in completion_request.response["choices"]:

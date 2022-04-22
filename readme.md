@@ -24,8 +24,8 @@ chmod +x local-env.sh
 # run once to initialize project environment
 v-init
 
-python3.10 project.py -h
-# project.py -f <function> -n <num_responses> -m <model_name> -M <model_name_array>
+vibe-emulator -h
+# vibe-emulator -f <function> -n <num_responses> -m <model_name> -M <model_name_array>
 #         -f <function> - str- required - function name
 #                 options: ["create_training_file", "emulate_vibe", "compare_vibes"]
 #         -n <num_responses> - int - default 1 - number of responses desired
