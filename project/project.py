@@ -50,7 +50,7 @@ models = {
 def emulate_vibe(num_responses=1, model_list_input="default", model_name_input=default_model_name):
     model = models[model_list_input][model_name_input]# models[8]
 
-    print("----- Emulate {}'s Vibe ----".format(emulate_vibe))
+    print("----- Emulate {}'s Vibe ----".format(model_name_input))
 
     prompt = get_prompt()
 
