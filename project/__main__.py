@@ -18,20 +18,20 @@ def main(argv):
             function = arg
             num_responses = 1
             model_name = 'theonion'
-            model_array = None
+            model_list_name = 'default'
         elif opt in ("-n", "--num_responses"):
             num_responses = int(arg)
         elif opt in ("-m", "--model_name"):
             model_name = str(arg)
-        elif opt in ("-M", "--model_array"):
-            model_array = arg
+        elif opt in ("-l", "--model_list"):
+            model_list_name = arg
     match function:
         case "create_training_file":
             project.create_training_file()
         case "emulate_vibe":
-            project.emulate_vibe(num_responses, model_name)
+            project.emulate_vibe(num_responses, model_list_name, model_name)
         case "compare_vibes":
-            project.compare_vibes(num_responses, model_array)
+            project.compare_vibes(num_responses, model_list_name)
         case _:
             print("Invalid input for -f function flag\n")
             sys.exit(2)

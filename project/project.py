@@ -5,109 +5,77 @@ import json, jsonlines
 
 default_model_name = 'theonion'
 
-def emulate_vibe(num_responses=1, model_name_input=default_model_name):
-    models = {
-        'justin-t' : 'curie:ft-personal-2022-04-20-14-53-01',
-        'dril-old': 'curie:ft-personal:dril-2022-04-20-15-42-28',
-        'elon': 'curie:ft-personal:elon-2022-04-20-17-13-57',
-        'libsoftiktok' : 'curie:ft-personal:libsoftiktok-2022-04-20-17-49-25',
-        'dojacat' : 'curie:ft-personal:dojacat-2022-04-20-22-06-20',
-        'tuckercarlson' : 'curie:ft-personal:tuckercarlson-2022-04-21-00-47-52',
-        'h3h3' : 'curie:ft-personal:h3h3productions-2022-04-21-01-06-50',
-        'jordanbpeterson' : 'curie:ft-personal:jordanbpeterson-2022-04-21-01-18-02',
-        'berniesanders' : 'curie:ft-personal:berniesanders-2022-04-21-01-43-04',
-        'joebiden' : 'curie:ft-personal:joebiden-2022-04-21-02-34-22',
-        'drilv2' : 'curie:ft-personal:drilv2-2022-04-21-02-55-13',
-        'keemstar' : 'curie:ft-personal:keemstar-2022-04-21-03-11-19',
-        'kanyewest' : 'curie:ft-personal:kanyewest-2022-04-21-03-31-32',
-        'ggreenwald' : 'curie:ft-personal:ggreenwald-2022-04-21-04-20-24',
-        'comicdavesmith' : 'curie:ft-personal:comicdavesmith-2022-04-21-04-06-10',
-        'bts-twt' : 'curie:ft-personal:bts-twt-2022-04-21-18-36-39',
-        'keyon' : 'curie:ft-personal:keyon-2022-04-21-18-47-47',
-        'danfred360' : 'curie:ft-personal:dan-fred360-2022-04-21-03-43-25'
-     } # stop="\n"
+models = {
+        "default" : {
+            'dril': 'curie:ft-personal:drilv3-2022-04-22-12-26-53',
+            'tuckercarlson': 'curie:ft-personal:tuckercarlsonv2-2022-04-22-12-39-43',
+            'berniesanders' : 'curie:ft-personal:berniesandersv2-2022-04-22-18-11-20',
+            'elonmusk' : 'curie:ft-personal:elonv2-2022-04-22-16-44-32',
+            'mkv-riscy' : 'curie:ft-personal:mkvriscy-2022-04-22-18-43-22'
+        }, # stop="###"
+        "old" : {
+            'justin-t' : 'curie:ft-personal-2022-04-20-14-53-01',
+            'dril-old': 'curie:ft-personal:dril-2022-04-20-15-42-28',
+            'elon': 'curie:ft-personal:elon-2022-04-20-17-13-57',
+            'libsoftiktok' : 'curie:ft-personal:libsoftiktok-2022-04-20-17-49-25',
+            'dojacat' : 'curie:ft-personal:dojacat-2022-04-20-22-06-20',
+            'tuckercarlson' : 'curie:ft-personal:tuckercarlson-2022-04-21-00-47-52',
+            'h3h3' : 'curie:ft-personal:h3h3productions-2022-04-21-01-06-50',
+            'jordanbpeterson' : 'curie:ft-personal:jordanbpeterson-2022-04-21-01-18-02',
+            'berniesanders' : 'curie:ft-personal:berniesanders-2022-04-21-01-43-04',
+            'joebiden' : 'curie:ft-personal:joebiden-2022-04-21-02-34-22',
+            'drilv2' : 'curie:ft-personal:drilv2-2022-04-21-02-55-13',
+            'keemstar' : 'curie:ft-personal:keemstar-2022-04-21-03-11-19',
+            'kanyewest' : 'curie:ft-personal:kanyewest-2022-04-21-03-31-32',
+            'ggreenwald' : 'curie:ft-personal:ggreenwald-2022-04-21-04-20-24',
+            'comicdavesmith' : 'curie:ft-personal:comicdavesmith-2022-04-21-04-06-10',
+            'bts-twt' : 'curie:ft-personal:bts-twt-2022-04-21-18-36-39',
+            'keyon' : 'curie:ft-personal:keyon-2022-04-21-18-47-47',
+            'danfred360' : 'curie:ft-personal:dan-fred360-2022-04-21-03-43-25'
+        }, # stop="\n"
+        "frens" : {
+            'GenisWon' : 'curie:ft-personal:geniswon-2022-04-21-19-34-24',
+            'fearofsalt' : 'curie:ft-personal:fearofsalt-2022-04-21-20-17-17'
+        },
+        "more" : {
+            'theonion': 'curie:ft-personal:theonion-2022-04-21-19-19-28',
+            'danpriceseattle' : 'curie:ft-personal:danpriceseattle-2022-04-22-01-11-11',
+            'dril': 'curie:ft-personal:drilv3-2022-04-22-12-26-53',
+            'tuckercarlson': 'curie:ft-personal:tuckercarlsonv2-2022-04-22-12-39-43',
+            'elonmusk' : 'curie:ft-personal:elonv2-2022-04-22-16-44-32',
+            'berniesanders' : 'curie:ft-personal:berniesandersv2-2022-04-22-18-11-20'
+        }
+    }
 
-    new_models = {
-        'theonion': 'curie:ft-personal:theonion-2022-04-21-19-19-28',
-        'GenisWon' : 'curie:ft-personal:geniswon-2022-04-21-19-34-24',
-        'fearofsalt' : 'curie:ft-personal:fearofsalt-2022-04-21-20-17-17',
-        'danprice' : 'curie:ft-personal:danpriceseattle-2022-04-22-01-11-11',
-        'drilv3': 'curie:ft-personal:drilv3-2022-04-22-12-26-53',
-        'tuckercarlsonv2': 'curie:ft-personal:tuckercarlsonv2-2022-04-22-12-39-43',
-        'elonv2' : 'curie:ft-personal:elonv2-2022-04-22-16-44-32'
-    } # stop="###"
+def emulate_vibe(num_responses=1, model_list_input="default", model_name_input=default_model_name):
+    model = models[model_list_input][model_name_input]# models[8]
 
-    emulate_vibe = model_name_input
-
-    model = new_models[emulate_vibe]# models[8]
-
-    print("-------------------------- Emulate {}'s Vibe --------------------------".format(emulate_vibe))
+    print("----- Emulate {}'s Vibe ----".format(emulate_vibe))
 
     prompt = get_prompt()
 
     completion_request = CompletionRequest(model=model, prompt=prompt, stop_phrase="###", n=num_responses) # "\n" or "###"
-    print("\nOutput for model {}:".format(model))
+    print("\nOutput for model\n\t{}:".format(model))
     for tweet in completion_request.response["choices"]:
         print("-------------------------------")
         print("\t{}".format(tweet.text))
         print("-------------------------------")
 
-def compare_vibes(n, models_input=None):
-    if models_input is None:
-        models = [
-        'curie:ft-personal:theonion-2022-04-21-19-19-28',
-        # 'curie:ft-personal:geniswon-2022-04-21-19-34-24',
-        # 'curie:ft-personal:fearofsalt-2022-04-21-20-17-17',
-        'curie:ft-personal:danpriceseattle-2022-04-22-01-11-11',
-        'curie:ft-personal:drilv3-2022-04-22-12-26-53',
-        'curie:ft-personal:tuckercarlsonv2-2022-04-22-12-39-43',
-        'curie:ft-personal:elonv2-2022-04-22-16-44-32'
-    ]
+def compare_vibes(n, models_input="default"):
+    models_list = models[models_input]
 
-    elif models_input == "old":
-        models = [
-            # 'curie:ft-personal-2022-04-20-14-53-01',
-            # 'curie:ft-personal:dril-2022-04-20-15-42-28',
-            'curie:ft-personal:elon-2022-04-20-17-13-57',
-            # 'curie:ft-personal:libsoftiktok-2022-04-20-17-49-25',
-            # 'curie:ft-personal:dojacat-2022-04-20-22-06-20',
-            'curie:ft-personal:tuckercarlson-2022-04-21-00-47-52',
-            # 'curie:ft-personal:ggreenwald-2022-04-21-04-20-24',
-            'curie:ft-personal:comicdavesmith-2022-04-21-04-06-10',
-            # 'curie:ft-personal:h3h3productions-2022-04-21-01-06-50',
-            'curie:ft-personal:jordanbpeterson-2022-04-21-01-18-02',
-            'curie:ft-personal:berniesanders-2022-04-21-01-43-04',
-            'curie:ft-personal:joebiden-2022-04-21-02-34-22',
-            'curie:ft-personal:drilv2-2022-04-21-02-55-13',
-            # 'curie:ft-personal:keemstar-2022-04-21-03-11-19',
-            # 'curie:ft-personal:kanyewest-2022-04-21-03-31-32',
-            # 'curie:ft-personal:bts-twt-2022-04-21-18-36-39',
-            # 'curie:ft-personal:keyon-2022-04-21-18-47-47',
-            'curie:ft-personal:dan-fred360-2022-04-21-03-43-25',
-        ]
-    
-    else:
-        try:
-            models_input_length = len(models_input)
-            models = models_input
-        except Exception as e:
-            print("Exception occured initializing models (models_input param should be an array of string model names): {}".format(e))
-            exit()
-
-    print("------------------- Compare known reliable model responses -------------------")
+    print("---- Compare model responses for list {} ----".format(models_input))
 
     prompt = get_prompt()
 
-    for model in models:
-        completion_request = CompletionRequest(model=model, prompt=prompt, stop_phrase="###", n=n) # "\n"
-        print("------------------------")
-        print("\nOutput for model {}:\n".format(model))
+    for model_key in models_list:
+        completion_request = CompletionRequest(model=models_list[model_key], prompt=prompt, stop_phrase="###", n=n) # "\n"
+        print("\n ---- Output for model {}:\n".format(models_list[model_key]))
         for tweet in completion_request.response["choices"]:
             # tweet_words = tweet.text.split(" ")
             print("---------------------")
             print("\t{}".format(tweet.text))
             print("---------------------")
-        print("------------------------")
 
 def get_prompt():
     invalid_prompt = True
