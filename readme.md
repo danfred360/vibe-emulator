@@ -2,12 +2,12 @@
 ## Use
 1. `create_training_file()` will lookup a user by @ on twitter and export a JSONL file composed of three word prompts and resulting tweets to be used to fine tune an OpenAI model.
 
-2. At this point, you can use OpenAI CLI commands to create a fine-tuned model. Once the model is trained you can append it's name to the `models` arrays in the `create_completion_request()` and `compare_models()` as you please.
+2. At this point, you can use OpenAI CLI commands to create a fine-tuned model. Once the model is trained you can append it's name to the `models` arrays in the `emulate_vibe()` and `compare_vibes()` in `project.py` as you please.
 
 3. Once the model is trained you can use:
-  - `create_completion_request()` will return `-n` tweets emulating the user whose model is associated with the key value passed with `-m` variable is instantiated.
+  - `emulate_vibe` will return `-n` tweets emulating the user whose model is associated with the key value passed with `-m` variable is instantiated.
 
-  - `compare_models()` will return `-n` tweets tweet for each model in the models array passed with `-M`.
+  - `compare_vibes` will return `-n` tweets tweet for each model in the models array passed with `-M`.
 
 ## Running project
 First you'll need to create a .secret file emulating .secret-example with your Twitter bearer token and your OpenAI API key. You can obtain keys here:
