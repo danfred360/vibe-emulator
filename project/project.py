@@ -42,7 +42,7 @@ def emulate_vibe(num_responses=1, model_name_input=default_model_name):
 
     prompt = get_prompt()
 
-    completion_request = CompletionRequest(model=model, prompt=prompt, stop_phrase="\n", n=num_responses) # "\n" or "###"
+    completion_request = CompletionRequest(model=model, prompt=prompt, stop_phrase="###", n=num_responses) # "\n" or "###"
     print("\nOutput for model {}:".format(model))
     for tweet in completion_request.response["choices"]:
         print("-------------------------------")
