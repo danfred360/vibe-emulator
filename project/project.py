@@ -1,7 +1,7 @@
 from workers.twitter import TweetLookup, UserLookup
-from workers.openai import CompletionRequest
+from workers.openai import CompletionRequest, FineTuneCreationRequest
 from datetime import datetime
-import json, jsonlines
+import sys, json, jsonlines
 
 default_model_name = 'theonion'
 
@@ -95,7 +95,7 @@ def validate_input(query):
             print("\n\tInvalid response for user query validation.\n")
             validate_input(query)
 
-def create_training_file():
+def create_model():
     # get @ of twitter account
     invalid_query = True
     while invalid_query:
@@ -109,7 +109,7 @@ def create_training_file():
     while do_not_export:
         # query = input(" --> ")
         # output to custom path?
-        if validate_input(output_path):
+        if validate_input("Output path: {}".format(output_path)):
             if validate_input("Enter custom path?"):
                 print("Exiting...")
                 exit()
@@ -122,11 +122,45 @@ def create_training_file():
                     else:
                         output_path = custom_path
                         export_training_set(output_path, user_id)
+                        train_model(query, output_path)
                         custom_path_check = False
                         do_not_export = False
         else:
             export_training_set(output_path, user_id)
+            train_model(query, output_path)
             do_not_export = False
+
+def train_model(query, output_path):
+    do_not_train = True
+    suffix = query
+    while do_not_train:
+        if validate_input("Train model with suffix: {}".format(suffix)):
+            if validate_input("Enter custom suffix?"):
+                print("Exiting...")
+                exit()
+            else:
+                custom_suffix_check = True
+                while custom_suffix_check:
+                    custom_suffix = input("Enter custom suffix --> ")
+                    if validate_input(custom_suffix):
+                        pass
+                    else:
+                        suffix = custom_suffix
+                        try:
+                            fine_tune_creation_request = FineTuneCreationRequest(output_path, suffix)
+                            print(fine_tune_creation_request.result["message"])
+                            sys.exit(1)
+                        except Exception as e:
+                            print("Exception occured creating fine tune request response: {}".format(e))
+                            sys.exit(2)
+        else:
+            try:
+                fine_tune_creation_request = FineTuneCreationRequest(output_path, suffix)
+                print(fine_tune_creation_request.result["message"])
+                sys.exit(1)
+            except Exception as e:
+                print("Exception occured creating fine tune request response: {}".format(e))
+                sys.exit(2)
 
 def get_user_id(query):
     # get user id

@@ -26,8 +26,8 @@ def main(argv):
         elif opt in ("-l", "--model_list"):
             model_list_name = arg
     match function:
-        case "create_training_file":
-            project.create_training_file()
+        case "create_model":
+            project.create_model()
         case "emulate_vibe":
             project.emulate_vibe(num_responses, model_list_name, model_name)
         case "compare_vibes":

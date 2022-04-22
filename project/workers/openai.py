@@ -15,10 +15,11 @@ class CompletionRequest:
             sys.exit(2)
 
 class FineTuneCreationRequest:
-    def __init__(self, training_file_path):
+    def __init__(self, training_file_path, suffix):
         try:
             self.response = openai.FineTune.create(
-                training_file=training_file_path
+                training_file=training_file_path,
+                suffix=suffix
             )
         except Exception as e:
             print("Exception occured while attempting fine tune creation request: {}".format(e))
