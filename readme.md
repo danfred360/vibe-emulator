@@ -5,9 +5,9 @@
 2. At this point, you can use OpenAI CLI commands to create a fine-tuned model. Once the model is trained you can append it's name to the `models` arrays in the `create_completion_request()` and `compare_models()` as you please.
 
 3. Once the model is trained you can use:
-  - `create_completion_request()` will return 5 tweets emulating the user whose model is selected from the `models` array when the `model` variable is instantiated.
+  - `create_completion_request()` will return `-n` tweets emulating the user whose model is associated with the key value passed with `-m` variable is instantiated.
 
-  - `compare_models()` will return 1 tweet for each model in the models array.
+  - `compare_models()` will return `-n` tweets tweet for each model in the models array passed with `-M`.
 
 **For now this project can be used by commenting and un-commenting the desired function in `project\__main__.py.__main__()` before running `v-run`.**
 
@@ -24,10 +24,14 @@ chmod +x local-env.sh
 # run once to initialize project environment
 v-init
 
-# to run
-v-run
+python3.10 project.py -h
+# project.py -f <function> -n <num_responses> -m <model_name> -M <model_name_array>
+#         -f <function> - str- required - function name
+#                 options: ["create_training_file", "emulate_vibe", "compare_vibes"]
+#         -n <num_responses> - int - default 1 - number of responses desired
+#         -m <model_name> - str - default "theonion" - key value name for model
+#         -M <model_array> - arr - default new_models - array of string model names
 ```
-**This will run whatever method is in the __main__() function, so you'll need to change this to suit what you want to do before running.**
 ## Training Model
 Prepare training file
 ```bash
@@ -245,3 +249,10 @@ walks
 - [Python Documentation](https://docs.python.org/3/)
 - [Twitter API Docs](https://developer.twitter.com/en/docs)
   - [Tweets lookup](https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/introduction)
+- [Flask Documentation](https://flask.palletsprojects.com/en/2.1.x/)
+  - [Quickstart](https://flask.palletsprojects.com/en/2.1.x/quickstart)
+  - [Login Tutorial](https://realpython.com/introduction-to-flask-part-2-creating-a-login-page/)
+  - [Flask with Semantic and Gunicorn tutorial](https://github.com/nivesnine/flask-semantic-ui-mvc)
+- [Gunicorn production server](https://flask.palletsprojects.com/en/2.1.x/deploying/wsgi-standalone/#gunicorn)
+- [Semantic UI Component Framework](https://github.com/Semantic-Org/Semantic-UI)
+  - [Getting Started](https://semantic-ui.com/introduction/getting-started.html)
