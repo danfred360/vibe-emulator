@@ -33,7 +33,8 @@ def emulate_vibe(num_responses=1, model_name_input=default_model_name):
         'fearofsalt' : 'curie:ft-personal:fearofsalt-2022-04-21-20-17-17',
         'danprice' : 'curie:ft-personal:danpriceseattle-2022-04-22-01-11-11',
         'drilv3': 'curie:ft-personal:drilv3-2022-04-22-12-26-53',
-        'tuckercarlsonv2': 'curie:ft-personal:tuckercarlsonv2-2022-04-22-12-39-43'
+        'tuckercarlsonv2': 'curie:ft-personal:tuckercarlsonv2-2022-04-22-12-39-43',
+        'elonv2' : 'curie:ft-personal:elonv2-2022-04-22-16-44-32'
     } # stop="###"
 
     emulate_vibe = model_name_input
@@ -55,11 +56,12 @@ def compare_vibes(n, models_input=None):
     if models_input is None:
         models = [
         'curie:ft-personal:theonion-2022-04-21-19-19-28',
-        'curie:ft-personal:geniswon-2022-04-21-19-34-24',
-        'curie:ft-personal:fearofsalt-2022-04-21-20-17-17',
+        # 'curie:ft-personal:geniswon-2022-04-21-19-34-24',
+        # 'curie:ft-personal:fearofsalt-2022-04-21-20-17-17',
         'curie:ft-personal:danpriceseattle-2022-04-22-01-11-11',
         'curie:ft-personal:drilv3-2022-04-22-12-26-53',
-        'curie:ft-personal:tuckercarlsonv2-2022-04-22-12-39-43'
+        'curie:ft-personal:tuckercarlsonv2-2022-04-22-12-39-43',
+        'curie:ft-personal:elonv2-2022-04-22-16-44-32'
     ]
 
     elif models_input == "old":

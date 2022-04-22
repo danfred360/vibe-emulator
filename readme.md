@@ -245,6 +245,7 @@ walks
 
 ## Resources:
 - [OpenAI API](https://openai.com/api/)
+  - [Sharing outputs policy](https://openai.com/api/policies/sharing-publication/)
 - [Python Documentation](https://docs.python.org/3/)
 - [Twitter API Docs](https://developer.twitter.com/en/docs)
   - [Tweets lookup](https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/introduction)
