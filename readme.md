@@ -9,8 +9,6 @@
 
   - `compare_models()` will return `-n` tweets tweet for each model in the models array passed with `-M`.
 
-**For now this project can be used by commenting and un-commenting the desired function in `project\__main__.py.__main__()` before running `v-run`.**
-
 ## Running project
 First you'll need to create a .secret file emulating .secret-example with your Twitter bearer token and your OpenAI API key. You can obtain keys here:
 - [Twitter API](https://developer.twitter.com/en/docs/twitter-api)
@@ -18,6 +16,7 @@ First you'll need to create a .secret file emulating .secret-example with your T
 
 *Note: requires python3.10 and python3.10-venv*
 ```bash
+# working dir - ./vibe-emulator
 chmod +x local-env.sh
 . local-env.sh
 
