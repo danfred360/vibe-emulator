@@ -13,8 +13,9 @@ models = {
             'sensanders' : 'curie:ft-personal:sensanders-2022-04-23-00-28-29',
             'elonmusk' : 'curie:ft-personal:elonv2-2022-04-22-16-44-32',
             'denzelcurry' : 'curie:ft-personal:denzelcurry-2022-04-23-00-03-44',
-            'johndiesattheen' : 'curie:ft-personal:johndiesattheen-2022-04-23-00-35-19'
-            # 'mkv-riscy' : 'curie:ft-personal:mkvriscy-2022-04-22-18-43-22'
+            'johndiesattheen' : 'curie:ft-personal:johndiesattheen-2022-04-23-00-35-19',
+            'mkv-riscy' : 'curie:ft-personal:mkvriscy-2022-04-22-18-43-22',
+            'wheezywaiter': 'curie:ft-personal:wheezywaiter-2022-04-23-03-48-03'
         }, # stop="###"
         "old" : {
             'justin-t' : 'curie:ft-personal-2022-04-20-14-53-01',
