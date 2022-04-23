@@ -10,8 +10,11 @@ models = {
             'dril': 'curie:ft-personal:drilv3-2022-04-22-12-26-53',
             'tuckercarlson': 'curie:ft-personal:tuckercarlsonv2-2022-04-22-12-39-43',
             'berniesanders' : 'curie:ft-personal:berniesandersv2-2022-04-22-18-11-20',
+            'sensanders' : 'curie:ft-personal:sensanders-2022-04-23-00-28-29',
             'elonmusk' : 'curie:ft-personal:elonv2-2022-04-22-16-44-32',
-            'mkv-riscy' : 'curie:ft-personal:mkvriscy-2022-04-22-18-43-22'
+            'denzelcurry' : 'curie:ft-personal:denzelcurry-2022-04-23-00-03-44',
+            'johndiesattheen' : 'curie:ft-personal:johndiesattheen-2022-04-23-00-35-19'
+            # 'mkv-riscy' : 'curie:ft-personal:mkvriscy-2022-04-22-18-43-22'
         }, # stop="###"
         "old" : {
             'justin-t' : 'curie:ft-personal-2022-04-20-14-53-01',
@@ -36,6 +39,19 @@ models = {
         "frens" : {
             'GenisWon' : 'curie:ft-personal:geniswon-2022-04-21-19-34-24',
             'fearofsalt' : 'curie:ft-personal:fearofsalt-2022-04-21-20-17-17'
+        },
+        "sanders" : {
+            'berniesanders' : 'curie:ft-personal:berniesandersv2-2022-04-22-18-11-20',
+            'sensanders' : 'curie:ft-personal:sensanders-2022-04-23-00-28-29'
+        },
+        "political" : {
+            'tuckercarlson': 'curie:ft-personal:tuckercarlsonv2-2022-04-22-12-39-43',
+            'berniesanders' : 'curie:ft-personal:berniesandersv2-2022-04-22-18-11-20',
+            'sensanders' : 'curie:ft-personal:sensanders-2022-04-23-00-28-29',
+        },
+        "fun" : {
+            'tuckercarlson': 'curie:ft-personal:tuckercarlsonv2-2022-04-22-12-39-43',
+            'johndiesattheen' : 'curie:ft-personal:johndiesattheen-2022-04-23-00-35-19'
         },
         "more" : {
             'theonion': 'curie:ft-personal:theonion-2022-04-21-19-19-28',
@@ -70,7 +86,7 @@ def compare_vibes(n, models_input="default"):
 
     for model_key in models_list:
         completion_request = CompletionRequest(model=models_list[model_key], prompt=prompt, stop_phrase="###", n=n) # "\n"
-        print("\n ---- Output for model {}:\n".format(models_list[model_key]))
+        print("Output for model {}:".format(models_list[model_key]))
         for tweet in completion_request.response["choices"]:
             # tweet_words = tweet.text.split(" ")
             print("---------------------")

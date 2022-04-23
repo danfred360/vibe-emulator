@@ -2,14 +2,14 @@ import sys, getopt, project
 
 def main(argv):
     try:
-        opts, args = getopt.getopt(argv,"hf:n:m:M:",["function="])
+        opts, args = getopt.getopt(argv,"hf:n:m:l:",["function="])
     except getopt.GetoptError:
         print('Bad args: "vibe-emulator -h" for help')
         sys.exit(2)
     for opt, arg in opts:
         if opt in ('-h', "--help"):
             print('vibe-emulator -f <function> -n <num_responses> -m <model_name> -M <model_name_array>')
-            print('\t-f <function> - str - required - function name\n\t\toptions: ["create_training_file", "emulate_vibe", "compare_vibes"]')
+            print('\t-f <function> - str - required - function name\n\t\toptions: ["create_model", "emulate_vibe", "compare_vibes"]')
             print('\t-n <num_responses> - int - default 1 - number of responses desired')
             print('\t-m <model_name> - str - default "theonion" - key value name for model')
             print('\t-M <model_array> - arr - default new_models - array of string model names')
@@ -24,7 +24,7 @@ def main(argv):
         elif opt in ("-m", "--model_name"):
             model_name = str(arg)
         elif opt in ("-l", "--model_list"):
-            model_list_name = arg
+            model_list_name = str(arg)
     match function:
         case "create_model":
             project.create_model()
