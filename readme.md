@@ -3,7 +3,7 @@ This program can fine-tune OpenAI models based on a user's tweets and generate t
 ## Use
 1. `create_model` will lookup a user by @ on twitter and export a JSONL file composed of three word prompts and resulting tweets to be used to fine tune an OpenAI model. (intended to create a model - WIP)
 
-2. At this point, you can use OpenAI CLI commands to create a fine-tuned model. Once the model is trained you can append it's name to the `models` dictionary in the `emulate_vibe()` and `compare_vibes()` in `project.py` as you please.
+2. At this point, you can use OpenAI CLI commands to create a fine-tuned model. Once the model is trained you can append it's name to the `models` dictionary in `config.py` as you please.
 
 3. Once the model is trained you can use:
   - `emulate_vibe` will return `-n` tweets emulating the user whose model is associated with the key value passed with `-m` flag.
@@ -30,7 +30,7 @@ vibe-emulator -h
 #                 options: ["create_model", "emulate_vibe", "compare_vibes"]
 #         -n <num_responses> - int - default 1 - number of responses desired
 #         -m <model_name> - str - default "theonion" - key value name for model
-#         -M <model_array> - arr - default new_models - array of string model names
+#         -l <model_list> - arr - default "default" - name of model list
 ```
 ## Training Model
 Prepare training file
