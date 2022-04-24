@@ -12,7 +12,7 @@ def main(argv):
             print('\t-f <function> - str - required - function name\n\t\toptions: ["create_model", "emulate_vibe", "compare_vibes"]')
             print('\t-n <num_responses> - int - default 1 - number of responses desired')
             print('\t-m <model_name> - str - default "theonion" - key value name for model')
-            print('\t-M <model_array> - arr - default new_models - array of string model names')
+            print('\t-l <model_list> - arr - default "default" - name of model list')
             sys.exit()
         elif opt in ("-f", "--function"):
             function = arg
