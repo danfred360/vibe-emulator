@@ -1,15 +1,14 @@
 # vibe-emulator
+This program can fine-tune OpenAI models based on a user's tweets and generate tweets based on these models. This project is meant to explore the possibilities of OpenAI's API and model fine-tuning by experimenting with training data and comparing prompted outputs for different models. Check out the [twitter account documenting research progress](https://twitter.com/vibe_emulator).
 ## Use
-1. `create_training_file()` will lookup a user by @ on twitter and export a JSONL file composed of three word prompts and resulting tweets to be used to fine tune an OpenAI model.
+1. `create_model` will lookup a user by @ on twitter and export a JSONL file composed of three word prompts and resulting tweets to be used to fine tune an OpenAI model. (intended to create a model - WIP)
 
-2. At this point, you can use OpenAI CLI commands to create a fine-tuned model. Once the model is trained you can append it's name to the `models` arrays in the `create_completion_request()` and `compare_models()` as you please.
+2. At this point, you can use OpenAI CLI commands to create a fine-tuned model. Once the model is trained you can append it's name to the `models` dictionary in the `emulate_vibe()` and `compare_vibes()` in `project.py` as you please.
 
 3. Once the model is trained you can use:
-  - `create_completion_request()` will return 5 tweets emulating the user whose model is selected from the `models` array when the `model` variable is instantiated.
+  - `emulate_vibe` will return `-n` tweets emulating the user whose model is associated with the key value passed with `-m` flag.
 
-  - `compare_models()` will return 1 tweet for each model in the models array.
-
-**For now this project can be used by commenting and un-commenting the desired function in `project\__main__.py.__main__()` before running `v-run`.**
+  - `compare_vibes` will return `-n` tweets tweet for each model in the object in the `models` dictionary that is associated with the key value passed by the  `-l` flag.
 
 ## Running project
 First you'll need to create a .secret file emulating .secret-example with your Twitter bearer token and your OpenAI API key. You can obtain keys here:
@@ -18,16 +17,21 @@ First you'll need to create a .secret file emulating .secret-example with your T
 
 *Note: requires python3.10 and python3.10-venv*
 ```bash
+# working dir - ./vibe-emulator
 chmod +x local-env.sh
 . local-env.sh
 
 # run once to initialize project environment
 v-init
 
-# to run
-v-run
+vibe-emulator -h
+# vibe-emulator -f <function> -n <num_responses> -m <model_name> -M <model_name_array>
+#         -f <function> - str- required - function name
+#                 options: ["create_model", "emulate_vibe", "compare_vibes"]
+#         -n <num_responses> - int - default 1 - number of responses desired
+#         -m <model_name> - str - default "theonion" - key value name for model
+#         -M <model_array> - arr - default new_models - array of string model names
 ```
-**This will run whatever method is in the __main__() function, so you'll need to change this to suit what you want to do before running.**
 ## Training Model
 Prepare training file
 ```bash
@@ -63,11 +67,12 @@ openai api fine_tunes.cancel -i <YOUR_FINE_TUNE_JOB_ID>
 openai api completions.create -m <FINE_TUNED_MODEL> -p <YOUR_PROMPT>
 ```
 
-For more useful responses try the `create_completion_request()` and `compare_models()` functions in `project`.
+For more useful responses try the `emulate_vibe` and `compare_vibes` functions.
 
 ## Example Outputs
+[Twitter account documenting research progress](https://twitter.com/vibe_emulator)
 
-[Use Example - model comparison](./outputs/use/comparison-political-parties.txt)
+Use example - [model comparison](./outputs/use/comparison-political-parties.txt)
 ```
 ┌──(venv)(frosty㉿DESKTOP-GLAMV3O)-[/mnt/c/Users/danny/Documents/code/openai/vibe-emulator]
 └─$ v-run
@@ -192,7 +197,7 @@ Output for model curie:ft-personal:dan-fred360-2022-04-21-03-43-25:
 ----------
 ```
 
-[Use Example: create completion request](./outputs/use/bernie-bot-league-of-legends.txt)
+Use example - [create completion request](./outputs/use/bernie-bot-league-of-legends.txt)
 ```
 ┌──(venv)(frosty㉿DESKTOP-GLAMV3O)-[/mnt/c/Users/danny/Documents/code/openai/vibe-emulator]
 └─$ v-run
@@ -242,6 +247,7 @@ walks
 
 ## Resources:
 - [OpenAI API](https://openai.com/api/)
+  - [Sharing outputs policy](https://openai.com/api/policies/sharing-publication/)
 - [Python Documentation](https://docs.python.org/3/)
 - [Twitter API Docs](https://developer.twitter.com/en/docs)
   - [Tweets lookup](https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/introduction)
