@@ -4,3 +4,4 @@ project/__pycache__/
 project/workers/__pycache__
 notes.md
 outputs/training-sets
+sqlite/

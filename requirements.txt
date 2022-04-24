@@ -4,27 +4,3 @@ openai
 requests
 jsonlines
 wandb
-
-# webapp requirements
-click
-Flask
-Flask-Admin
-Flask-Login
-Flask-SQLAlchemy
-Flask-WTF
-future
-gunicorn
-httplib2
-itsdangerous
-Jinja2
-MarkupSafe
-oauthlib
-PySocks
-pytz
-# requests
-requests-oauthlib
-six
-SQLAlchemy
-Werkzeug
-WTForms
-xlrd
