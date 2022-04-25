@@ -22,14 +22,15 @@ class GetUserTweets:
             self.append_tweets(json.loads(tweet_lookup.response))
             try:
                 pagination_token = json.loads(tweet_lookup.response)["meta"]["next_token"]
-                while response_page_limit >= 0:
+                more_pages = True
+                while response_page_limit >= 0 and more_pages:
                     new_tweet_lookup = TweetLookup(user_id, 100, pagination_token)
                     self.append_tweets(json.loads(new_tweet_lookup.response))
                     try:
                         pagination_token = json.loads(new_tweet_lookup.response)["meta"]["next_token"]
                     except Exception as e:
                         print("Exception occurred gathering tweets (assumed no next page in response - response_page_limit = {}): {}\n".format(response_page_limit, e))
-                        break
+                        more_pages = False
                     response_page_limit -= 1
             except Exception as e:
                 print("Exception occurred gathering tweets (assumed no next page in response - response_page_limit = {}): {}\n".format(response_page_limit, e))
@@ -71,7 +72,7 @@ class TweetLookup:
         return url
 
     def connect_to_endpoint(self, url):
-        response = requests.request("GET", url, auth=self.bearer_oauth)
+        response = requests.request("GET", url, auth=BearerOAuth())
         status_code = response.status_code
         if response.status_code != 200:
             raise Exception(

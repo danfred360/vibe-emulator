@@ -19,7 +19,7 @@ class FileUploadRequest:
         try:
             self.response = openai.File.create(
                 file=open(training_file_path),
-                purpose='completion'
+                purpose='fine-tune'
             )
         except Exception as e:
             print("Exception occured uploading training file: {}".format(e))
@@ -34,7 +34,16 @@ class FineTuneCreationRequest:
             )
         except Exception as e:
             print("Exception occured while attempting fine tune creation request: {}".format(e))
-            sys.exit(2) 
+            sys.exit(2)
+
+
+class GetFineTuneList:
+    def __init__(self):
+        try:
+            self.response = openai.FineTune.list()
+        except Exception as e:
+            print("Exception occured while attempting to get list of fine tunes: {}".format(e))
+            sys.exit(2)
 
 
 class FineTuneListRequest:

@@ -14,3 +14,4 @@ class ThreeWordPrompt:
                     num_tweets += 1
                 except:
                     continue # less than three words
+        self.path = output_path

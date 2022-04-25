@@ -251,3 +251,4 @@ walks
 - [Python Documentation](https://docs.python.org/3/)
 - [Twitter API Docs](https://developer.twitter.com/en/docs)
   - [Tweets lookup](https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/introduction)
+- [Build interactive CLI tools in Python](https://medium.com/geekculture/build-interactive-cli-tools-in-python-47303c50d75)

@@ -10,7 +10,8 @@ models = {
             'denzelcurry' : 'curie:ft-personal:denzelcurry-2022-04-23-00-03-44',
             'johndiesattheen' : 'curie:ft-personal:johndiesattheen-2022-04-23-00-35-19',
             'mkv-riscy' : 'curie:ft-personal:mkvriscy-2022-04-22-18-43-22',
-            'wheezywaiter': 'curie:ft-personal:wheezywaiter-2022-04-23-03-48-03'
+            'wheezywaiter': 'curie:ft-personal:wheezywaiter-2022-04-23-03-48-03',
+            'linusgsebastian' : 'curie:ft-personal:linusgsebastian-2022-04-25-02-52-28'
         }, # stop="###"
         "old" : {
             'justin-t' : 'curie:ft-personal-2022-04-20-14-53-01',
@@ -46,8 +47,16 @@ models = {
             'sensanders' : 'curie:ft-personal:sensanders-2022-04-23-00-28-29',
         },
         "fun" : {
+            # 'dril': 'curie:ft-personal:drilv3-2022-04-22-12-26-53',
             'tuckercarlson': 'curie:ft-personal:tuckercarlsonv2-2022-04-22-12-39-43',
-            'johndiesattheen' : 'curie:ft-personal:johndiesattheen-2022-04-23-00-35-19'
+            # 'berniesanders' : 'curie:ft-personal:berniesandersv2-2022-04-22-18-11-20',
+            # 'sensanders' : 'curie:ft-personal:sensanders-2022-04-23-00-28-29',
+            'elonmusk' : 'curie:ft-personal:elonv2-2022-04-22-16-44-32',
+            # 'denzelcurry' : 'curie:ft-personal:denzelcurry-2022-04-23-00-03-44',
+            # 'johndiesattheen' : 'curie:ft-personal:johndiesattheen-2022-04-23-00-35-19',
+            # 'mkv-riscy' : 'curie:ft-personal:mkvriscy-2022-04-22-18-43-22',
+            'wheezywaiter': 'curie:ft-personal:wheezywaiter-2022-04-23-03-48-03',
+            'linusgsebastian' : 'curie:ft-personal:linusgsebastian-2022-04-25-02-52-28'
         },
         "more" : {
             'theonion': 'curie:ft-personal:theonion-2022-04-21-19-19-28',

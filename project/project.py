@@ -87,7 +87,8 @@ def create_model(query=None):
                         custom_path_check = False
                         do_not_export = False
         else:
-            new_model = ThreeWordPrompt(output_path, GetUserTweets(user_id).tweets)
+            new_training_set = ThreeWordPrompt(output_path, GetUserTweets(user_id).tweets)
+            train_model(query, new_training_set.path)
             do_not_export = False
 
 def train_model(query, output_path):
@@ -109,7 +110,7 @@ def train_model(query, output_path):
                         try:
                             file_upload_request = FileUploadRequest(output_path)
                             fine_tune_creation_request = FineTuneCreationRequest(file_upload_request.file_id, suffix)
-                            print(fine_tune_creation_request.result["message"])
+                            print(fine_tune_creation_request.request["message"])
                             sys.exit(1)
                         except Exception as e:
                             print("Exception occured creating fine tune request response: {}".format(e))
